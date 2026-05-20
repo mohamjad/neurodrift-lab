@@ -3,3 +3,8 @@
 The repo does not require Inspect AI as a dependency. This module keeps the
 boundary explicit so an evaluation task can import NeuroDrift without dragging
 frontier-eval tooling into core numerical tests.
+"""
+
+from __future__ import annotations
+
+from typing import Any
