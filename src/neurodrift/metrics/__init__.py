@@ -18,3 +18,4 @@ __all__ = [
     "principal_angles",
     "subspace_distance",
     "trajectory_drift",
+]
