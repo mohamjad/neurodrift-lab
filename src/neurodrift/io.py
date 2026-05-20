@@ -28,3 +28,8 @@ def save_session_pair_npz(pair: SessionPair, path: Path) -> None:
         source_intent=pair.source.intent,
         target_neural=pair.target.neural,
         target_intent=pair.target.intent,
+        source_session_id=pair.source.session_id,
+        target_session_id=pair.target.session_id,
+        source_sample_rate_hz=pair.source.sample_rate_hz,
+        target_sample_rate_hz=pair.target.sample_rate_hz,
+    )
