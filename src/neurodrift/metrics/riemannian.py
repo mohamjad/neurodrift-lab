@@ -28,3 +28,8 @@ class CovarianceDrift:
     log_euclidean: float
     covariance_trace_ratio: float
 
+
+def affine_invariant_distance(source: Array, target: Array, epsilon: float = 1e-8) -> float:
+    """Affine-invariant geodesic distance on SPD matrices.
+
+    The distance is ``||log(A^{-1/2} B A^{-1/2})||_F``. It is a standard
