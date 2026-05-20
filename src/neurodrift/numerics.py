@@ -53,3 +53,8 @@ def matrix_invsqrt_spd(matrix: Array, epsilon: float = 1e-8) -> Array:
     vals, vecs = np.linalg.eigh(regularize_spd(matrix, epsilon))
     return symmetrize((vecs * (1.0 / np.sqrt(vals))) @ vecs.T)
 
+
+def frobenius_norm(matrix: Array) -> float:
+    """Return the Frobenius norm as a Python float."""
+
+    return float(np.linalg.norm(matrix, ord="fro"))
