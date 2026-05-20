@@ -23,3 +23,8 @@ class DecoderDrift:
 def decoder_drift(source_outputs: Array, target_outputs: Array) -> DecoderDrift:
     """Compare paired decoder outputs from source and target sessions."""
 
+    source_outputs = np.asarray(source_outputs, dtype=np.float64)
+    target_outputs = np.asarray(target_outputs, dtype=np.float64)
+    if source_outputs.shape != target_outputs.shape:
+        raise ValueError("decoder outputs must have identical shapes")
+    residual = source_outputs - target_outputs
