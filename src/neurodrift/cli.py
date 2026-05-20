@@ -53,3 +53,8 @@ def run_fetch_milimbeeg(args: argparse.Namespace) -> int:
     fetch_milimbeeg_sample(args.dest, subject=args.subject)
     pair = load_milimbeeg_pair(args.dest, subject=args.subject)
     save_session_pair_npz(pair, args.output)
+    print(json.dumps({"subject": args.subject, "output": str(args.output)}, indent=2))
+    return 0
+
+
+def run_convert_nlb(args: argparse.Namespace) -> int:
