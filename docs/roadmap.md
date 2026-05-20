@@ -13,3 +13,8 @@
 - Optional pyRiemann-backed implementations.
 - Optional geomstats manifolds.
 - Inspect AI task wrapper.
+- METR task-standard packaging.
+- BRAND stream adapter.
+
+## Phase 3: Research workflows
+
