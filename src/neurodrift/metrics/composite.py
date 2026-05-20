@@ -8,3 +8,8 @@ from typing import Any
 from neurodrift.metrics.decoder import DecoderDrift, decoder_drift
 from neurodrift.metrics.riemannian import CovarianceDrift, covariance_drift
 from neurodrift.metrics.subspace import procrustes_error, subspace_distance
+from neurodrift.metrics.trajectory import TrajectoryDrift, trajectory_drift
+from neurodrift.session import SessionPair
+
+
+@dataclass(frozen=True)
