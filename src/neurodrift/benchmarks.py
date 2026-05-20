@@ -58,3 +58,8 @@ class AlignmentBenchmark:
     rows: tuple[AlignmentBenchmarkRow, ...]
 
     @property
+    def best_by_target_mse(self) -> AlignmentBenchmarkRow:
+        return min(self.rows, key=lambda row: row.target_mse)
+
+    @property
+    def best_by_gain(self) -> AlignmentBenchmarkRow:
