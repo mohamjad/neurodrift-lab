@@ -33,3 +33,8 @@ on purpose: larger eval runners should wrap this API rather than control core
 math directly.
 
 ## Simulation
+
+The simulator creates paired source and target sessions from shared latent
+intent dynamics. Target sessions receive controlled projection rotation,
+feature-gain drift, noise, and small intent perturbations. This makes tests and
+example reports reproducible while preserving the distinction between toy data
