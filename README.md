@@ -73,3 +73,8 @@ configs/         Example experiment configs
 - Keep mathematical assumptions explicit.
 - Treat simulated data as a test harness, not a replacement for invasive data.
 - Make every metric reproducible and inspectable.
+- Build extension points before building dashboards or papers.
+
+## License
+
+MIT. Upstream integrations remain external dependencies and retain their own
