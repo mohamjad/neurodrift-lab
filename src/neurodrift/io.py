@@ -33,3 +33,8 @@ def save_session_pair_npz(pair: SessionPair, path: Path) -> None:
         source_sample_rate_hz=pair.source.sample_rate_hz,
         target_sample_rate_hz=pair.target.sample_rate_hz,
     )
+
+
+def load_session_pair_npz(path: Path) -> SessionPair:
+    """Load a session pair saved by ``save_session_pair_npz``."""
+
