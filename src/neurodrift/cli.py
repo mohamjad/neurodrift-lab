@@ -48,3 +48,8 @@ def run_benchmark(args: argparse.Namespace) -> int:
     _emit(benchmark.to_dict(), args.output)
     return 0
 
+
+def run_fetch_milimbeeg(args: argparse.Namespace) -> int:
+    fetch_milimbeeg_sample(args.dest, subject=args.subject)
+    pair = load_milimbeeg_pair(args.dest, subject=args.subject)
+    save_session_pair_npz(pair, args.output)
