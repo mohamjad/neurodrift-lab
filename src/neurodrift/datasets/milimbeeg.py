@@ -63,3 +63,8 @@ def _read_trial_csv(path: Path) -> Array:
         raise ValueError(f"expected sampling column plus EEG channels in {path}")
     return data[:, 1:]
 
+
+def _trial_metadata(path: Path) -> tuple[str, int, str, int]:
+    match = _FILE_RE.search(path.name)
+    if match is None:
+        raise ValueError(f"cannot parse MILimbEEG trial filename: {path.name}")
