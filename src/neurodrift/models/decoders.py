@@ -23,3 +23,8 @@ class RidgeDecoder:
 
         features = np.asarray(features, dtype=np.float64)
         intent = np.asarray(intent, dtype=np.float64)
+        if features.ndim != 2 or intent.ndim != 2:
+            raise ValueError("features and intent must be matrices")
+        if features.shape[0] != intent.shape[0]:
+            raise ValueError("features and intent must have the same row count")
+        if self.alpha < 0:
