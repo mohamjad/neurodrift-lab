@@ -78,3 +78,4 @@ configs/         Example experiment configs
 ## License
 
 MIT. Upstream integrations remain external dependencies and retain their own
+licenses.
