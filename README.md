@@ -53,3 +53,8 @@ Run a neural-population smoke benchmark from the included NLB fixture:
 neurodrift benchmark --input data\fixtures\nlb_mc_maze_small_20.npz
 ```
 
+## Repository layout
+
+```text
+src/neurodrift/
+  metrics/       Riemannian, subspace, trajectory, and decoder drift metrics
