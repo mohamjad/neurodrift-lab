@@ -68,3 +68,8 @@ class AlignmentBenchmark:
     def to_dict(self) -> dict[str, Any]:
         return {
             "best_by_target_mse": self.best_by_target_mse.name,
+            "best_by_gain": self.best_by_gain.name,
+            "rows": [row.to_dict() for row in self.rows],
+        }
+
+
