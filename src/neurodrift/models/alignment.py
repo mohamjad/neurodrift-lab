@@ -98,3 +98,8 @@ class WhiteningColoringAligner:
             raise ValueError("source and target must have the same feature dimension")
         self.source_mean_ = source.mean(axis=0, keepdims=True)
         self.target_mean_ = target.mean(axis=0, keepdims=True)
+        source_cov = safe_covariance(source - self.source_mean_, self.epsilon)
+        target_cov = safe_covariance(target - self.target_mean_, self.epsilon)
+        self.transform_ = matrix_invsqrt_spd(target_cov, self.epsilon) @ matrix_sqrt_spd(
+            source_cov, self.epsilon
+        )
