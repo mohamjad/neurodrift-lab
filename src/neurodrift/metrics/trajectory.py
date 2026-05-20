@@ -43,3 +43,8 @@ def discrete_curvature(trajectory: Array, epsilon: float = 1e-8) -> Array:
 
 
 def trajectory_drift(source: Array, target: Array) -> TrajectoryDrift:
+    """Compare two aligned latent trajectories."""
+
+    source = np.asarray(source, dtype=np.float64)
+    target = np.asarray(target, dtype=np.float64)
+    if source.shape != target.shape:
