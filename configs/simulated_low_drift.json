@@ -1,0 +1,5 @@
+{
+  "seed": 7,
+  "trials": 96,
+  "time_steps": 40,
+  "channels": 16,
