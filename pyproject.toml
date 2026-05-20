@@ -3,3 +3,8 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
+name = "neurodrift-lab"
+version = "0.1.0"
+description = "Metrics and evaluation environments for BCI intent drift and neuroplasticity."
+readme = "README.md"
+requires-python = ">=3.10"
