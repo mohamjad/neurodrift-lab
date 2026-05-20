@@ -18,3 +18,8 @@ def test_alignment_benchmark_rejects_unknown_strategy() -> None:
     pair = simulate_session_pair(SimulationConfig(seed=13, trials=32, channels=8))
 
     try:
+        run_alignment_benchmark(pair, ("identity", "missing"))
+    except ValueError as exc:
+        assert "missing" in str(exc)
+    else:
+        raise AssertionError("unknown aligner should raise ValueError")
