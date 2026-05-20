@@ -33,3 +33,8 @@ def _random_orthogonal(rng: np.random.Generator, dims: int) -> Array:
     return q @ np.diag(np.sign(np.diag(r)))
 
 
+def _smooth_intents(rng: np.random.Generator, trials: int, intent_dims: int) -> Array:
+    raw = rng.normal(size=(trials, intent_dims))
+    kernel = np.array([0.15, 0.25, 0.2, 0.25, 0.15])
+    padded = np.pad(raw, ((2, 2), (0, 0)), mode="edge")
+    smoothed = np.vstack(
