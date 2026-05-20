@@ -43,3 +43,8 @@ python examples\simulate_drift_report.py
 
 Run a real-data smoke benchmark from the included MILimbEEG/OpenBCI fixture:
 
+```powershell
+neurodrift benchmark --input data\fixtures\milimbeeg_s1.npz
+```
+
+Run a neural-population smoke benchmark from the included NLB fixture:
