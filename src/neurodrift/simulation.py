@@ -58,3 +58,8 @@ def simulate_session_pair(config: SimulationConfig) -> SessionPair:
 
     if config.intent_dims > config.latent_dims:
         raise ValueError("intent_dims must be less than or equal to latent_dims")
+    rng = np.random.default_rng(config.seed)
+    intents = _smooth_intents(rng, config.trials, config.intent_dims)
+    intent_to_latent = rng.normal(scale=0.8, size=(config.intent_dims, config.latent_dims))
+    latent_static = intents @ intent_to_latent
+    temporal = _temporal_basis(config.time_steps, config.latent_dims)
