@@ -3,3 +3,8 @@
 NeuroDrift Lab is not a fork of any single project. It is a systems layer that
 connects established BCI, geometry, and frontier-eval ideas.
 
+## Geometry and BCI signal processing
+
+- `pyRiemann`: reference implementation for SPD covariance geometry,
+  tangent-space features, MDM classifiers, and Procrustes alignment utilities.
+- `geomstats`: broader Riemannian geometry toolkit for custom manifolds.
