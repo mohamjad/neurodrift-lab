@@ -48,3 +48,8 @@ def build_drift_report(
     procrustes = procrustes_error(pair.source.trial_features, pair.target.trial_features)
     decoder = None
     decoder_penalty = 0.0
+    if source_decoder_outputs is not None and target_decoder_outputs is not None:
+        decoder = decoder_drift(source_decoder_outputs, target_decoder_outputs)
+        decoder_penalty = decoder.mse + decoder.cosine_error
+    raw_penalty = (
+        covariance.affine_invariant
