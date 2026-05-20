@@ -43,3 +43,5 @@ latent state space, not just a before/after delta.
 ## Decoder drift
 
 Decoder output stability is measured with MSE, cosine error, output gain ratio,
+and bias shift. This keeps the final question explicit: did decoded intent stay
+stable enough to use?
