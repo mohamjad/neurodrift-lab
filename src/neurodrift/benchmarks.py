@@ -78,3 +78,8 @@ def run_alignment_benchmark(
     aligner_names: tuple[str, ...] | None = None,
 ) -> AlignmentBenchmark:
     """Evaluate a suite of alignment strategies on one session pair."""
+
+    names = aligner_names or tuple(ALIGNER_REGISTRY)
+    unknown = sorted(set(names) - set(ALIGNER_REGISTRY))
+    if unknown:
+        raise ValueError(f"unknown aligners: {', '.join(unknown)}")
