@@ -68,3 +68,8 @@ def load_nlb_h5_pair(
     paired_count = min(source_idx.size, target_idx.size)
     source_idx = source_idx[:paired_count]
     target_idx = target_idx[:paired_count]
+    return SessionPair(
+        source=SessionBatch(
+            neural=spikes[source_idx],
+            intent=intent[source_idx],
+            session_id=f"{dataset}-even",
