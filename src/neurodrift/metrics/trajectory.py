@@ -23,3 +23,8 @@ class TrajectoryDrift:
 def path_length(trajectory: Array) -> float:
     """Return total Euclidean path length for a trajectory shaped ``(time, dims)``."""
 
+    trajectory = np.asarray(trajectory, dtype=np.float64)
+    if trajectory.ndim != 2:
+        raise ValueError("trajectory must be shaped (time, dims)")
+    return float(np.linalg.norm(np.diff(trajectory, axis=0), axis=1).sum())
+
