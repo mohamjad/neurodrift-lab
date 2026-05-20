@@ -43,3 +43,8 @@ To refresh it from the public CSV source:
 ```powershell
 neurodrift fetch-milimbeeg --dest data\external\milimbeeg --subject S1 --output data\fixtures\milimbeeg_s1.npz
 ```
+
+The loader treats imagery trials as the source session and motor execution
+trials as the target session. This is not invasive BCI, but it is a useful real
+multi-session EEG smoke test for the same drift pipeline.
+
