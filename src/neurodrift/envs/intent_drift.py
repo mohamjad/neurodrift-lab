@@ -43,3 +43,8 @@ class IntentDriftEnv:
     def evaluate(self, aligner: Aligner | None = None) -> DriftEvaluationResult:
         """Fit a source decoder and score target-session preservation."""
 
+        aligner = aligner or IdentityAligner()
+        source_x = self.pair.source.trial_features
+        target_x = self.pair.target.trial_features
+        source_y = self.pair.source.intent
+        target_y = self.pair.target.intent
