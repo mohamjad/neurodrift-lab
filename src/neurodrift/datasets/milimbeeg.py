@@ -18,3 +18,8 @@ MILIMBEEG_RAW_BASE_URL = (
     "/main/MatlabCode/data"
 )
 DEFAULT_TASKS = (2, 3, 4, 5, 6, 7)
+DEFAULT_REPEATS = (1, 2, 3)
+_FILE_RE = re.compile(r"(?P<subject>S\d+)R(?P<run>\d+)(?P<mode>[IM])(?P<task>\d+)_")
+
+
+def _trial_url(subject: str, mode: str, task: int, repeat: int, run: int = 1) -> str:
