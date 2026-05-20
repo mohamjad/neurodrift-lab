@@ -38,3 +38,4 @@ def test_whitening_coloring_matches_covariance_shape() -> None:
 
     source_cov = np.cov(source, rowvar=False)
     aligned_cov = np.cov(aligned, rowvar=False)
+    assert np.linalg.norm(source_cov - aligned_cov, ord="fro") < 1e-4
