@@ -23,3 +23,8 @@ def _load_config(path: Path | None) -> SimulationConfig:
 
 
 def _load_pair(args: argparse.Namespace):
+    if args.input is not None:
+        return load_session_pair_npz(args.input)
+    return simulate_session_pair(_load_config(args.config))
+
+
