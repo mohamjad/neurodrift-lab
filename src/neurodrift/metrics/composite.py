@@ -33,3 +33,8 @@ class DriftReport:
         payload["covariance"].pop("target_covariance", None)
         return payload
 
+
+def build_drift_report(
+    pair: SessionPair,
+    *,
+    source_decoder_outputs=None,
