@@ -28,3 +28,8 @@ Paired trial features are aligned with the best orthogonal transform. Residual
 error is a direct estimate of how much cannot be explained by simple manifold
 rotation.
 
+## Trajectory drift
+
+Latent or trial-level trajectories are scored by:
+
+- mean position shift
