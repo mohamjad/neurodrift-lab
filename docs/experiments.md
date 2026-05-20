@@ -38,3 +38,8 @@ The repo includes a small converted MILimbEEG/OpenBCI subject fixture:
 neurodrift benchmark --input data\fixtures\milimbeeg_s1.npz
 ```
 
+To refresh it from the public CSV source:
+
+```powershell
+neurodrift fetch-milimbeeg --dest data\external\milimbeeg --subject S1 --output data\fixtures\milimbeeg_s1.npz
+```
