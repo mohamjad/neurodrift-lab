@@ -23,3 +23,8 @@ def _require_h5py():
 def _trial_intent(behavior: Array) -> Array:
     if behavior.ndim == 3:
         return behavior.mean(axis=1)
+    if behavior.ndim == 2:
+        return behavior
+    raise ValueError("NLB behavior must be shaped (trials, time, dims) or (trials, dims)")
+
+
