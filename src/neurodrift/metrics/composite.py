@@ -53,3 +53,8 @@ def build_drift_report(
         decoder_penalty = decoder.mse + decoder.cosine_error
     raw_penalty = (
         covariance.affine_invariant
+        + subspace
+        + procrustes
+        + trajectory.mean_position_shift
+        + decoder_penalty
+    )
