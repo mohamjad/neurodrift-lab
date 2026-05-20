@@ -78,3 +78,8 @@ def _trial_metadata(path: Path) -> tuple[str, int, str, int]:
 
 def _one_hot(labels: list[int]) -> Array:
     unique = sorted(set(labels))
+    index = {label: idx for idx, label in enumerate(unique)}
+    encoded = np.zeros((len(labels), len(unique)), dtype=np.float64)
+    for row, label in enumerate(labels):
+        encoded[row, index[label]] = 1.0
+    return encoded
