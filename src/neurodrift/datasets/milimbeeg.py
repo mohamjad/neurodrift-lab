@@ -128,3 +128,7 @@ def load_milimbeeg_pair(
         target=SessionBatch(
             neural=target_neural[:trial_count],
             intent=target_intent[:trial_count],
+            session_id=f"{subject}-{target_mode}",
+            sample_rate_hz=125.0,
+        ),
+    )
