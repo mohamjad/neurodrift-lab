@@ -58,3 +58,8 @@ def run_fetch_milimbeeg(args: argparse.Namespace) -> int:
 
 
 def run_convert_nlb(args: argparse.Namespace) -> int:
+    pair = load_nlb_h5_pair(args.input, dataset=args.dataset, max_trials=args.max_trials)
+    save_session_pair_npz(pair, args.output)
+    print(
+        json.dumps(
+            {"dataset": args.dataset, "input": str(args.input), "output": str(args.output)},
