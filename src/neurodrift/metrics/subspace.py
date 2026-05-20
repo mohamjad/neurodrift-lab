@@ -53,3 +53,8 @@ def orthogonal_procrustes(source: Array, target: Array) -> Array:
     """Fit the orthogonal matrix that best maps source samples to target samples."""
 
     source = np.asarray(source, dtype=np.float64)
+    target = np.asarray(target, dtype=np.float64)
+    if source.shape != target.shape:
+        raise ValueError("source and target must have the same shape")
+    cross_cov = source.T @ target
+    u, _, vh = np.linalg.svd(cross_cov, full_matrices=False)
