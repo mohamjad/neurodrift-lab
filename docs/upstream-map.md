@@ -18,3 +18,8 @@ connects established BCI, geometry, and frontier-eval ideas.
 - Neural Latents Benchmark: real neural population HDF5 data can be converted
   through `neurodrift convert-nlb` for motor-cortex smoke tests.
 
+## Online BCI systems
+
+- BRAND: real-time asynchronous neural decoding backend.
+- BCI simulator repos: useful for closed-loop replay and decoder stress tests.
+- MILimbEEG/OpenBCI: public multi-session EEG CSV recordings used here as a
