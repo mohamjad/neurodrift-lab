@@ -68,3 +68,8 @@ def simulate_session_pair(config: SimulationConfig) -> SessionPair:
     source_projection = rng.normal(scale=0.6, size=(config.latent_dims, config.channels))
     rotation = _random_orthogonal(rng, config.channels)
     gain = np.linspace(1.0, 1.0 + config.drift_strength, config.channels)
+    target_projection = source_projection @ (
+        (1.0 - config.drift_strength) * np.eye(config.channels)
+        + config.drift_strength * rotation
+    )
+    target_projection = target_projection * gain[None, :]
