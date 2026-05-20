@@ -13,3 +13,5 @@ __all__ = [
     "IdentityAligner",
     "ProcrustesAligner",
     "RidgeDecoder",
+    "WhiteningColoringAligner",
+]
