@@ -13,3 +13,8 @@ from neurodrift.session import SessionPair
 
 
 @dataclass(frozen=True)
+class DriftEvaluationResult:
+    """Score payload returned by an intent-drift evaluation run."""
+
+    source_mse: float
+    target_mse_raw: float
