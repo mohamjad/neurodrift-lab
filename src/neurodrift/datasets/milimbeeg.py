@@ -83,3 +83,8 @@ def _one_hot(labels: list[int]) -> Array:
     for row, label in enumerate(labels):
         encoded[row, index[label]] = 1.0
     return encoded
+
+
+def _load_mode_trials(subject_dir: Path, mode: str, tasks: tuple[int, ...]) -> tuple[Array, Array]:
+    paths = sorted(subject_dir.glob(f"*{mode}*.csv"))
+    trials: list[Array] = []
