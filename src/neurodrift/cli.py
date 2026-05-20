@@ -63,3 +63,8 @@ def run_convert_nlb(args: argparse.Namespace) -> int:
     print(
         json.dumps(
             {"dataset": args.dataset, "input": str(args.input), "output": str(args.output)},
+            indent=2,
+        )
+    )
+    return 0
+
