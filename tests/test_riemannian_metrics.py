@@ -13,3 +13,8 @@ def test_affine_invariant_distance_is_zero_for_same_matrix() -> None:
     assert affine_invariant_distance(cov, cov) < 1e-9
 
 
+def test_affine_invariant_distance_detects_covariance_shift() -> None:
+    rng = np.random.default_rng(2)
+    source = rng.normal(size=(128, 4))
+    target = source @ np.diag([1.0, 1.5, 0.75, 2.0])
+
