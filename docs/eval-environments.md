@@ -13,3 +13,8 @@ small enough to audit:
 The environment can be wrapped by external eval systems without changing core
 math:
 
+- Inspect AI: use the adapter boundary in `neurodrift.adapters.inspect_ai`.
+- METR task-standard: package a config, fixed seed, command, and scorer around
+  `neurodrift benchmark`.
+- NeMo Gym or Gymnasium: expose alignment choice as the action and report
+  alignment gain or stability score as the reward.
