@@ -28,3 +28,8 @@ def path_length(trajectory: Array) -> float:
         raise ValueError("trajectory must be shaped (time, dims)")
     return float(np.linalg.norm(np.diff(trajectory, axis=0), axis=1).sum())
 
+
+def discrete_curvature(trajectory: Array, epsilon: float = 1e-8) -> Array:
+    """Estimate pointwise curvature from finite differences."""
+
+    trajectory = np.asarray(trajectory, dtype=np.float64)
