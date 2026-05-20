@@ -38,3 +38,8 @@ def matrix_log_spd(matrix: Array, epsilon: float = 1e-8) -> Array:
 
     vals, vecs = np.linalg.eigh(regularize_spd(matrix, epsilon))
     return symmetrize((vecs * np.log(vals)) @ vecs.T)
+
+
+def matrix_sqrt_spd(matrix: Array, epsilon: float = 1e-8) -> Array:
+    """Matrix square root for symmetric positive-definite matrices."""
+
