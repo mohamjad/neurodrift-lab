@@ -28,3 +28,8 @@ class AlignmentBenchmarkRow:
 
     name: str
     result: DriftEvaluationResult
+
+    @property
+    def target_mse(self) -> float:
+        return self.result.target_mse_aligned
+
