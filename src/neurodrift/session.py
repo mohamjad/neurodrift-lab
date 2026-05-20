@@ -58,3 +58,7 @@ class SessionPair:
     target: SessionBatch
 
     def __post_init__(self) -> None:
+        if self.source.neural.shape[2] != self.target.neural.shape[2]:
+            raise ValueError("source and target must have the same channel count")
+        if self.source.intent.shape[1] != self.target.intent.shape[1]:
+            raise ValueError("source and target must have the same intent dimensionality")
