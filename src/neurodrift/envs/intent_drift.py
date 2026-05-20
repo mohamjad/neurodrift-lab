@@ -53,3 +53,8 @@ class IntentDriftEnv:
         source_pred = self.decoder.predict(source_x)
         raw_target_pred = self.decoder.predict(target_x)
 
+        aligner.fit(source_x, target_x)
+        aligned_target_x = aligner.transform(target_x)
+        aligned_target_pred = self.decoder.predict(aligned_target_x)
+
+        source_mse = self.decoder.score_mse(source_x, source_y)
