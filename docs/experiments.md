@@ -28,3 +28,8 @@ returns a ranked machine-readable report.
 - `procrustes_error`: residual after best paired orthogonal alignment.
 
 Use the simulator presets to test the machinery. Replace the simulator with
+real session loaders when invasive BCI data is available.
+
+## Real-data smoke test
+
+The repo includes a small converted MILimbEEG/OpenBCI subject fixture:
