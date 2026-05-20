@@ -23,3 +23,8 @@ def build_inspect_ready_sample(config: SimulationConfig | None = None) -> dict[s
     return {
         "input": "Choose and justify an alignment strategy for the target BCI session.",
         "metadata": {
+            "source_session": pair.source.session_id,
+            "target_session": pair.target.session_id,
+            "baseline": baseline.to_dict(),
+            "recommended_action": "whitening_coloring_alignment",
+        },
