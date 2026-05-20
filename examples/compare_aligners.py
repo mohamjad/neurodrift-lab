@@ -13,3 +13,6 @@ def main() -> None:
     benchmark = run_alignment_benchmark(simulate_session_pair(config))
     print(json.dumps(benchmark.to_dict(), indent=2))
 
+
+if __name__ == "__main__":
+    main()
