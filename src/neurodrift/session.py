@@ -33,3 +33,8 @@ class SessionBatch:
             raise ValueError("intent must be shaped (trials, intent_dims)")
         if self.neural.shape[0] != self.intent.shape[0]:
             raise ValueError("neural and intent must have the same trial count")
+        if self.sample_rate_hz <= 0:
+            raise ValueError("sample_rate_hz must be positive")
+
+    @property
+    def flattened_neural(self) -> Array:
