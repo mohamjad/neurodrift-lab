@@ -73,3 +73,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="neurodrift")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
+    simulate = subparsers.add_parser("simulate", help="run a synthetic drift evaluation")
+    simulate.add_argument("--config", type=Path, default=None)
+    simulate.add_argument("--input", type=Path, default=None, help="load a session pair NPZ")
+    simulate.add_argument("--output", type=Path, default=None, help="write JSON report")
+    simulate.add_argument("--aligner", choices=sorted(ALIGNER_REGISTRY), default="whiten-color")
