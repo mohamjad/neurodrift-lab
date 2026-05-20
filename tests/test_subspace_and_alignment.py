@@ -33,3 +33,8 @@ def test_whitening_coloring_matches_covariance_shape() -> None:
     rng = np.random.default_rng(5)
     source = rng.normal(size=(120, 5)) @ np.diag([1.0, 1.4, 0.7, 2.0, 0.4])
     target = rng.normal(size=(120, 5)) @ np.diag([2.0, 0.5, 1.2, 0.8, 1.5])
+
+    aligned = WhiteningColoringAligner().fit(source, target).transform(target)
+
+    source_cov = np.cov(source, rowvar=False)
+    aligned_cov = np.cov(aligned, rowvar=False)
