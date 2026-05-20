@@ -13,3 +13,8 @@ from neurodrift.numerics import (
     matrix_log_spd,
     regularize_spd,
     safe_covariance,
+)
+
+Array = NDArray[np.float64]
+
+
