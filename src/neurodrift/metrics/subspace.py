@@ -58,3 +58,8 @@ def orthogonal_procrustes(source: Array, target: Array) -> Array:
         raise ValueError("source and target must have the same shape")
     cross_cov = source.T @ target
     u, _, vh = np.linalg.svd(cross_cov, full_matrices=False)
+    return u @ vh
+
+
+def procrustes_error(source: Array, target: Array) -> float:
+    """Return normalized alignment error after orthogonal Procrustes."""
