@@ -28,3 +28,8 @@ sessions that share channel and intent dimensions.
 ## Environment stack
 
 `IntentDriftEnv` fits a source decoder, applies an alignment strategy to target
+features, and reports whether target intent preservation improved. It is small
+on purpose: larger eval runners should wrap this API rather than control core
+math directly.
+
+## Simulation
