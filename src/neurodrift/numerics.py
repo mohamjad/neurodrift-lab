@@ -33,3 +33,8 @@ def regularize_spd(matrix: Array, epsilon: float = 1e-6) -> Array:
     return symmetrize((vecs * vals) @ vecs.T)
 
 
+def matrix_log_spd(matrix: Array, epsilon: float = 1e-8) -> Array:
+    """Matrix logarithm for symmetric positive-definite matrices."""
+
+    vals, vecs = np.linalg.eigh(regularize_spd(matrix, epsilon))
+    return symmetrize((vecs * np.log(vals)) @ vecs.T)
