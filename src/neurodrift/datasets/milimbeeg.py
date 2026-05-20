@@ -58,3 +58,8 @@ def fetch_milimbeeg_sample(
 
 
 def _read_trial_csv(path: Path) -> Array:
+    data = np.genfromtxt(path, delimiter=",", skip_header=1, dtype=np.float64)
+    if data.ndim != 2 or data.shape[1] < 2:
+        raise ValueError(f"expected sampling column plus EEG channels in {path}")
+    return data[:, 1:]
+
