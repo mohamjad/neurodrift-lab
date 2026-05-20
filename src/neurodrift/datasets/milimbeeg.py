@@ -68,3 +68,8 @@ def _trial_metadata(path: Path) -> tuple[str, int, str, int]:
     match = _FILE_RE.search(path.name)
     if match is None:
         raise ValueError(f"cannot parse MILimbEEG trial filename: {path.name}")
+    return (
+        match.group("subject"),
+        int(match.group("run")),
+        match.group("mode"),
+        int(match.group("task")),
