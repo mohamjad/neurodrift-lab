@@ -18,3 +18,8 @@ class SessionBatch:
         neural: Array shaped ``(trials, time, channels)``.
         intent: Array shaped ``(trials, intent_dims)``.
         session_id: Stable label for provenance and reporting.
+        sample_rate_hz: Sampling rate for temporal metrics.
+    """
+
+    neural: Array
+    intent: Array
