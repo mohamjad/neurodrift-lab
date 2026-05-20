@@ -48,3 +48,8 @@ class AlignmentBenchmarkRow:
             "alignment_gain": self.alignment_gain,
             "stability_score": self.stability_score,
             "result": self.result.to_dict(),
+        }
+
+
+@dataclass(frozen=True)
+class AlignmentBenchmark:
