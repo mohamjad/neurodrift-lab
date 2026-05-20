@@ -43,3 +43,8 @@ class RidgeDecoder:
 
         if self.weights_ is None or self.bias_ is None:
             raise RuntimeError("decoder must be fit before predict")
+        features = np.asarray(features, dtype=np.float64)
+        return features @ self.weights_ + self.bias_
+
+    def score_mse(self, features: Array, intent: Array) -> float:
+        """Return mean squared error against intent labels."""
