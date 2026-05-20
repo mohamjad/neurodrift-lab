@@ -38,3 +38,8 @@ def fetch_milimbeeg_sample(
 ) -> list[Path]:
     """Download a small public MILimbEEG subset for real-data smoke tests."""
 
+    dest = Path(dest)
+    subject_dir = dest / subject
+    subject_dir.mkdir(parents=True, exist_ok=True)
+    downloaded: list[Path] = []
+    for mode in modes:
