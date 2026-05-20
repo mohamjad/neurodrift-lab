@@ -43,3 +43,8 @@ def load_session_pair_npz(path: Path) -> SessionPair:
             source=SessionBatch(
                 neural=data["source_neural"],
                 intent=data["source_intent"],
+                session_id=str(data["source_session_id"]),
+                sample_rate_hz=float(data["source_sample_rate_hz"]),
+            ),
+            target=SessionBatch(
+                neural=data["target_neural"],
