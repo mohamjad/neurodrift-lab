@@ -73,3 +73,5 @@ class IntentDriftEnv:
             target_mse_raw=target_mse_raw,
             target_mse_aligned=target_mse_aligned,
             alignment_gain=float(alignment_gain),
+            report=report,
+        )
