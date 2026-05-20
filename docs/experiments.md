@@ -18,3 +18,8 @@ neurodrift benchmark --config configs\simulated_high_drift.json
 
 This runs every registered alignment strategy against the same session pair and
 returns a ranked machine-readable report.
+
+## Reading the results
+
+- `target_mse_aligned`: lower is better.
+- `alignment_gain`: positive means adaptation improved target decoding.
