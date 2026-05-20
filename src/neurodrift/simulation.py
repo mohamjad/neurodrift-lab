@@ -93,3 +93,7 @@ def simulate_session_pair(config: SimulationConfig) -> SessionPair:
         target=SessionBatch(
             neural=target_neural.astype(np.float64),
             intent=target_intent.astype(np.float64),
+            session_id="target",
+            sample_rate_hz=config.sample_rate_hz,
+        ),
+    )
