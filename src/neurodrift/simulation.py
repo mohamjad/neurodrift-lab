@@ -28,3 +28,8 @@ class SimulationConfig:
 
 
 def _random_orthogonal(rng: np.random.Generator, dims: int) -> Array:
+    matrix = rng.normal(size=(dims, dims))
+    q, r = np.linalg.qr(matrix)
+    return q @ np.diag(np.sign(np.diag(r)))
+
+
