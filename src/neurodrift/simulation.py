@@ -73,3 +73,8 @@ def simulate_session_pair(config: SimulationConfig) -> SessionPair:
         + config.drift_strength * rotation
     )
     target_projection = target_projection * gain[None, :]
+
+    source_neural = latent @ source_projection
+    target_neural = latent @ target_projection
+
+    target_intent = intents + config.drift_strength * rng.normal(
