@@ -78,3 +78,8 @@ def simulate_session_pair(config: SimulationConfig) -> SessionPair:
     target_neural = latent @ target_projection
 
     target_intent = intents + config.drift_strength * rng.normal(
+        scale=0.15, size=(config.trials, config.intent_dims)
+    )
+    source_neural += rng.normal(scale=config.noise_scale, size=source_neural.shape)
+    target_neural += rng.normal(scale=config.noise_scale, size=target_neural.shape)
+
