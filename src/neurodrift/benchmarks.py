@@ -38,3 +38,8 @@ class AlignmentBenchmarkRow:
         return self.result.alignment_gain
 
     @property
+    def stability_score(self) -> float:
+        return self.result.report.stability_score
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
