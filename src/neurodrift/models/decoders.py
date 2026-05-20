@@ -28,3 +28,8 @@ class RidgeDecoder:
         if features.shape[0] != intent.shape[0]:
             raise ValueError("features and intent must have the same row count")
         if self.alpha < 0:
+            raise ValueError("alpha must be non-negative")
+        x_mean = features.mean(axis=0)
+        y_mean = intent.mean(axis=0)
+        x = features - x_mean
+        y = intent - y_mean
