@@ -33,3 +33,8 @@ real session loaders when invasive BCI data is available.
 ## Real-data smoke test
 
 The repo includes a small converted MILimbEEG/OpenBCI subject fixture:
+
+```powershell
+neurodrift benchmark --input data\fixtures\milimbeeg_s1.npz
+```
+
