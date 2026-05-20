@@ -53,3 +53,8 @@ multi-session EEG smoke test for the same drift pipeline.
 If you have the Neural Latents Benchmark HDF5 evaluation file locally:
 
 ```powershell
+neurodrift convert-nlb --input path\to\eval_data_test.h5 --dataset mc_maze_small_20 --output data\fixtures\nlb_mc_maze_small_20.npz
+neurodrift benchmark --input data\fixtures\nlb_mc_maze_small_20.npz
+```
+
+The adapter splits held-out trials into even/odd pseudo-sessions. That is a
