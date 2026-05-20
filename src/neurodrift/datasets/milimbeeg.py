@@ -53,3 +53,8 @@ def fetch_milimbeeg_sample(
                             path.write_bytes(response.read())
                     except (HTTPError, URLError, TimeoutError) as exc:
                         raise RuntimeError(f"failed to fetch {url}") from exc
+                downloaded.append(path)
+    return downloaded
+
+
+def _read_trial_csv(path: Path) -> Array:
