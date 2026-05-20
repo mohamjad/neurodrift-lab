@@ -13,3 +13,8 @@ sessions that share channel and intent dimensions.
 
 - `metrics.riemannian`: covariance geometry on SPD matrices.
 - `metrics.subspace`: principal angles and Procrustes errors.
+- `metrics.trajectory`: velocity, path length, and curvature movement.
+- `metrics.decoder`: output-level intent preservation.
+- `metrics.composite`: machine-readable summary for eval runners.
+
+## Model stack
