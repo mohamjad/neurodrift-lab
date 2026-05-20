@@ -28,3 +28,8 @@ longitudinal drift as the first-class object:
 
 This is an early but working foundation. It does not vendor upstream projects.
 Instead, it exposes clean adapters and documents how to integrate established
+tools such as pyRiemann, Geomstats, LFADS, NoMAD-style latent alignment,
+BRAND, and BCI simulators.
+
+## Quickstart
+
