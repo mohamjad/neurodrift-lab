@@ -38,3 +38,8 @@ def save_session_pair_npz(pair: SessionPair, path: Path) -> None:
 def load_session_pair_npz(path: Path) -> SessionPair:
     """Load a session pair saved by ``save_session_pair_npz``."""
 
+    with np.load(path, allow_pickle=False) as data:
+        return SessionPair(
+            source=SessionBatch(
+                neural=data["source_neural"],
+                intent=data["source_intent"],
