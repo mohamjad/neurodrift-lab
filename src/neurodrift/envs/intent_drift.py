@@ -18,3 +18,8 @@ class DriftEvaluationResult:
 
     source_mse: float
     target_mse_raw: float
+    target_mse_aligned: float
+    alignment_gain: float
+    report: DriftReport
+
+    def to_dict(self) -> dict[str, Any]:
