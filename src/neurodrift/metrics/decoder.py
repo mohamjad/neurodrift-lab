@@ -28,3 +28,8 @@ def decoder_drift(source_outputs: Array, target_outputs: Array) -> DecoderDrift:
     if source_outputs.shape != target_outputs.shape:
         raise ValueError("decoder outputs must have identical shapes")
     residual = source_outputs - target_outputs
+    source_norm = np.linalg.norm(source_outputs, axis=1)
+    target_norm = np.linalg.norm(target_outputs, axis=1)
+    denom = np.maximum(source_norm * target_norm, 1e-8)
+    cosine = np.sum(source_outputs * target_outputs, axis=1) / denom
+    return DecoderDrift(
