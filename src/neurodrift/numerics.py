@@ -58,3 +58,8 @@ def frobenius_norm(matrix: Array) -> float:
     """Return the Frobenius norm as a Python float."""
 
     return float(np.linalg.norm(matrix, ord="fro"))
+
+
+def safe_covariance(samples: Array, epsilon: float = 1e-6) -> Array:
+    """Estimate an SPD covariance matrix from observations shaped ``(n, d)``."""
+
