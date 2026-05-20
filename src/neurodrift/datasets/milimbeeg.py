@@ -108,3 +108,8 @@ def load_milimbeeg_pair(
     root: Path,
     *,
     subject: str = "S1",
+    source_mode: str = "I",
+    target_mode: str = "M",
+    tasks: tuple[int, ...] = DEFAULT_TASKS,
+) -> SessionPair:
+    """Load a real MILimbEEG subject as imagery-to-motor session drift."""
