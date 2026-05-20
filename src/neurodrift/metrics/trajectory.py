@@ -8,3 +8,8 @@ import numpy as np
 from numpy.typing import NDArray
 
 Array = NDArray[np.float64]
+
+
+@dataclass(frozen=True)
+class TrajectoryDrift:
+    """Movement summary for two latent trajectories."""
