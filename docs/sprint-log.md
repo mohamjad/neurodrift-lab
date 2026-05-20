@@ -8,3 +8,8 @@ until a GitHub remote exists.
 Created the monorepo scaffold, packaging metadata, docs foundation, and shared
 session containers.
 
+## Sprint 002
+
+Added numerical SPD helpers, Riemannian covariance drift, subspace metrics,
+trajectory metrics, decoder drift, and composite reporting.
+
