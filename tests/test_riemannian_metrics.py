@@ -18,3 +18,8 @@ def test_affine_invariant_distance_detects_covariance_shift() -> None:
     source = rng.normal(size=(128, 4))
     target = source @ np.diag([1.0, 1.5, 0.75, 2.0])
 
+    report = covariance_drift(source, target)
+
+    assert report.affine_invariant > 0.5
+    assert report.log_euclidean > 0.5
+    assert report.covariance_trace_ratio > 1.0
