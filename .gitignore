@@ -8,3 +8,8 @@ dist/
 build/
 *.egg-info/
 outputs/
+data/external/
+data/raw/
+data/private/
+.env
+.tmp-upstream/
