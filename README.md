@@ -23,3 +23,8 @@ longitudinal drift as the first-class object:
 - Did decoder outputs preserve intent after the move?
 - Which alignment strategy best stabilizes the interface?
 - Can we score an adaptive decoder as an environment, not just a static model?
+
+## Status
+
+This is an early but working foundation. It does not vendor upstream projects.
+Instead, it exposes clean adapters and documents how to integrate established
