@@ -73,3 +73,8 @@ def _trial_metadata(path: Path) -> tuple[str, int, str, int]:
         int(match.group("run")),
         match.group("mode"),
         int(match.group("task")),
+    )
+
+
+def _one_hot(labels: list[int]) -> Array:
+    unique = sorted(set(labels))
