@@ -43,3 +43,8 @@ class CenteringTransform:
     target_mean_: Array | None = None
 
     def fit(self, source: Array, target: Array) -> CenteringTransform:
+        source = np.asarray(source, dtype=np.float64)
+        target = np.asarray(target, dtype=np.float64)
+        self.source_mean_ = source.mean(axis=0, keepdims=True)
+        self.target_mean_ = target.mean(axis=0, keepdims=True)
+        return self
