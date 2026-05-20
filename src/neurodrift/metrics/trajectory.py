@@ -18,3 +18,8 @@ class TrajectoryDrift:
     mean_velocity_shift: float
     path_length_ratio: float
     curvature_shift: float
+
+
+def path_length(trajectory: Array) -> float:
+    """Return total Euclidean path length for a trajectory shaped ``(time, dims)``."""
+
