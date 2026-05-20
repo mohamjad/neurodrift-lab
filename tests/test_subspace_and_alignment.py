@@ -23,3 +23,8 @@ def test_procrustes_alignment_reduces_paired_trial_error() -> None:
 
     raw_error = np.linalg.norm(source - target) / np.linalg.norm(source)
     aligned = ProcrustesAligner().fit(source, target).transform(target)
+    aligned_error = np.linalg.norm(source - aligned) / np.linalg.norm(source)
+
+    assert aligned_error < raw_error
+    assert procrustes_error(target, source) < raw_error
+
