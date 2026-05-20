@@ -33,3 +33,8 @@ class IdentityAligner:
 
     def transform(self, target: Array) -> Array:
         return np.asarray(target, dtype=np.float64)
+
+
+@dataclass
+class CenteringTransform:
+    """Mean-shift target features to match the source session mean."""
