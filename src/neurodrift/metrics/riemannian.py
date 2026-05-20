@@ -43,3 +43,8 @@ def affine_invariant_distance(source: Array, target: Array, epsilon: float = 1e-
 
 
 def log_euclidean_distance(source: Array, target: Array, epsilon: float = 1e-8) -> float:
+    """Log-Euclidean SPD distance."""
+
+    return frobenius_norm(matrix_log_spd(source, epsilon) - matrix_log_spd(target, epsilon))
+
+
