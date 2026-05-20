@@ -98,3 +98,8 @@ def _load_mode_trials(subject_dir: Path, mode: str, tasks: tuple[int, ...]) -> t
         raise ValueError(f"no MILimbEEG {mode} trials found in {subject_dir}")
     min_time = min(trial.shape[0] for trial in trials)
     neural = np.stack([trial[:min_time] for trial in trials]).astype(np.float64)
+    channel_mean = neural.mean(axis=(0, 1), keepdims=True)
+    channel_scale = np.maximum(neural.std(axis=(0, 1), keepdims=True), 1e-8)
+    neural = (neural - channel_mean) / channel_scale
+    return neural, _one_hot(labels)
+
