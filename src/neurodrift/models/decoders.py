@@ -8,3 +8,8 @@ import numpy as np
 from numpy.typing import NDArray
 
 Array = NDArray[np.float64]
+
+
+@dataclass
+class RidgeDecoder:
+    """Small deterministic ridge decoder for neural features to intent vectors."""
