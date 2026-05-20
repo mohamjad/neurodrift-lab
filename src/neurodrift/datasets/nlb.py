@@ -48,3 +48,8 @@ def load_nlb_h5_pair(
     with h5py.File(path, "r") as handle:
         if dataset not in handle:
             raise ValueError(f"dataset group not found: {dataset}")
+        group = handle[dataset]
+        spikes = np.asarray(group[spikes_key], dtype=np.float64)
+        behavior = np.asarray(group[behavior_key], dtype=np.float64)
+    if spikes.ndim != 3:
+        raise ValueError("NLB spikes must be shaped (trials, time, channels)")
