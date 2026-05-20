@@ -48,3 +48,6 @@ class RidgeDecoder:
 
     def score_mse(self, features: Array, intent: Array) -> float:
         """Return mean squared error against intent labels."""
+
+        pred = self.predict(features)
+        return float(np.mean((pred - intent) ** 2))
