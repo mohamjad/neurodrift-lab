@@ -38,3 +38,8 @@ def load_nlb_h5_pair(
 ) -> SessionPair:
     """Load one NLB dataset group as an even/odd source-target session pair.
 
+    NLB is not longitudinal by itself. This adapter creates a real neural
+    population smoke test by splitting held-out evaluation trials into two
+    matched pseudo-sessions while preserving the original spike and behavior
+    arrays.
+    """
