@@ -53,3 +53,8 @@ def _temporal_basis(time_steps: int, latent_dims: int) -> Array:
     return np.asarray(basis, dtype=np.float64)
 
 
+def simulate_session_pair(config: SimulationConfig) -> SessionPair:
+    """Create source and target sessions with known latent and covariance drift."""
+
+    if config.intent_dims > config.latent_dims:
+        raise ValueError("intent_dims must be less than or equal to latent_dims")
