@@ -63,3 +63,6 @@ def covariance_drift(
         source_covariance=source_cov,
         target_covariance=target_cov,
         affine_invariant=affine_invariant_distance(source_cov, target_cov, epsilon),
+        log_euclidean=log_euclidean_distance(source_cov, target_cov, epsilon),
+        covariance_trace_ratio=target_trace / max(source_trace, epsilon),
+    )
