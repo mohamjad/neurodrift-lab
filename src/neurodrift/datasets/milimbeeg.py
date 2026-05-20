@@ -118,3 +118,8 @@ def load_milimbeeg_pair(
     source_neural, source_intent = _load_mode_trials(subject_dir, source_mode, tasks)
     target_neural, target_intent = _load_mode_trials(subject_dir, target_mode, tasks)
     trial_count = min(source_neural.shape[0], target_neural.shape[0])
+    return SessionPair(
+        source=SessionBatch(
+            neural=source_neural[:trial_count],
+            intent=source_intent[:trial_count],
+            session_id=f"{subject}-{source_mode}",
