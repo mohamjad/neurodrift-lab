@@ -58,3 +58,8 @@ def covariance_drift(
     source_cov = safe_covariance(source_samples, epsilon)
     target_cov = safe_covariance(target_samples, epsilon)
     source_trace = float(np.trace(source_cov))
+    target_trace = float(np.trace(target_cov))
+    return CovarianceDrift(
+        source_covariance=source_cov,
+        target_covariance=target_cov,
+        affine_invariant=affine_invariant_distance(source_cov, target_cov, epsilon),
