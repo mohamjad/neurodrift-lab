@@ -13,3 +13,8 @@ from neurodrift.models.alignment import (
     WhiteningColoringAligner,
 )
 from neurodrift.session import SessionPair
+
+ALIGNER_REGISTRY = {
+    "identity": IdentityAligner,
+    "center": CenteringTransform,
+    "procrustes": ProcrustesAligner,
