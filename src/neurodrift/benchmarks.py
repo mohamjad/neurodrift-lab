@@ -63,3 +63,8 @@ class AlignmentBenchmark:
 
     @property
     def best_by_gain(self) -> AlignmentBenchmarkRow:
+        return max(self.rows, key=lambda row: row.alignment_gain)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "best_by_target_mse": self.best_by_target_mse.name,
