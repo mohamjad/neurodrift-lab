@@ -53,3 +53,8 @@ def load_nlb_h5_pair(
         behavior = np.asarray(group[behavior_key], dtype=np.float64)
     if spikes.ndim != 3:
         raise ValueError("NLB spikes must be shaped (trials, time, channels)")
+    intent = _trial_intent(behavior)
+    trial_count = min(spikes.shape[0], intent.shape[0])
+    if max_trials is not None:
+        trial_count = min(trial_count, max_trials)
+    if trial_count < 4:
