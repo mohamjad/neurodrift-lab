@@ -48,3 +48,8 @@ def _temporal_basis(time_steps: int, latent_dims: int) -> Array:
     time = np.linspace(0.0, 1.0, time_steps)
     basis = []
     for freq in range(1, latent_dims + 1):
+        wave = np.sin(2 * np.pi * freq * time) if freq % 2 else np.cos(np.pi * freq * time)
+        basis.append(wave)
+    return np.asarray(basis, dtype=np.float64)
+
+
