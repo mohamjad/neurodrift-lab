@@ -83,3 +83,8 @@ class ProcrustesAligner:
 
 
 @dataclass
+class WhiteningColoringAligner:
+    """Covariance alignment that whitens target features and recolors to source."""
+
+    source_mean_: Array | None = None
+    target_mean_: Array | None = None
