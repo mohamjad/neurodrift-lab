@@ -8,3 +8,8 @@ The project is deliberately built as a composable lab rather than a one-off
 notebook. It includes:
 
 - Riemannian metrics for covariance and latent-state drift.
+- Session simulation for controlled neuroplasticity and intent-drift studies.
+- Decoder and alignment baselines.
+- A small evaluation environment API that can later be wrapped by Inspect AI,
+  METR task-standard tasks, NeMo Gym, or Gymnasium.
+- Tests and examples intended to keep the code readable and auditable.
