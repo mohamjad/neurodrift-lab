@@ -13,3 +13,8 @@ def test_simulated_pair_has_expected_shapes() -> None:
     assert pair.target.neural.shape == (32, 12, 7)
     assert pair.source.intent.shape == (32, 2)
     assert pair.target.intent.shape == (32, 2)
+
+
+def test_env_returns_machine_readable_scores() -> None:
+    pair = simulate_session_pair(SimulationConfig(seed=8, trials=48, time_steps=18, channels=9))
+    result = IntentDriftEnv(pair).evaluate(WhiteningColoringAligner())
