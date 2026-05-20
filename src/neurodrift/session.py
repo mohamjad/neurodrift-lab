@@ -43,3 +43,8 @@ class SessionBatch:
         trials, time, channels = self.neural.shape
         return self.neural.reshape(trials * time, channels)
 
+    @property
+    def trial_features(self) -> Array:
+        """Return simple per-trial neural features for decoders and baselines."""
+
+        return self.neural.mean(axis=1)
