@@ -8,3 +8,8 @@ connects established BCI, geometry, and frontier-eval ideas.
 - `pyRiemann`: reference implementation for SPD covariance geometry,
   tangent-space features, MDM classifiers, and Procrustes alignment utilities.
 - `geomstats`: broader Riemannian geometry toolkit for custom manifolds.
+
+## Neural latent dynamics
+
+- NoMAD: strong reference for stabilizing BCI with latent dynamics alignment.
+- LFADS and Neural Data Transformers: upstream-style tools for extracting
