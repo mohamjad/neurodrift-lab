@@ -58,3 +58,8 @@ def load_nlb_h5_pair(
     if max_trials is not None:
         trial_count = min(trial_count, max_trials)
     if trial_count < 4:
+        raise ValueError("at least four trials are required to build an NLB pair")
+    spikes = spikes[:trial_count]
+    intent = intent[:trial_count]
+    intent_scale = np.maximum(intent.std(axis=0, keepdims=True), 1e-8)
+    intent = (intent - intent.mean(axis=0, keepdims=True)) / intent_scale
