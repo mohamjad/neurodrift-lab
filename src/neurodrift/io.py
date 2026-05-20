@@ -23,3 +23,8 @@ def save_session_pair_npz(pair: SessionPair, path: Path) -> None:
 
     path.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
+        path,
+        source_neural=pair.source.neural,
+        source_intent=pair.source.intent,
+        target_neural=pair.target.neural,
+        target_intent=pair.target.intent,
