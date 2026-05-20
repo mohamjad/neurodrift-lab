@@ -78,3 +78,8 @@ def build_parser() -> argparse.ArgumentParser:
     simulate.add_argument("--input", type=Path, default=None, help="load a session pair NPZ")
     simulate.add_argument("--output", type=Path, default=None, help="write JSON report")
     simulate.add_argument("--aligner", choices=sorted(ALIGNER_REGISTRY), default="whiten-color")
+    simulate.set_defaults(func=run_simulation)
+
+    benchmark = subparsers.add_parser("benchmark", help="compare all alignment strategies")
+    benchmark.add_argument("--config", type=Path, default=None)
+    benchmark.add_argument("--input", type=Path, default=None, help="load a session pair NPZ")
