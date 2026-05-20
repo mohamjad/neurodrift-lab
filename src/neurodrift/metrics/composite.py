@@ -18,3 +18,8 @@ class DriftReport:
 
     source_session: str
     target_session: str
+    covariance: CovarianceDrift
+    trajectory: TrajectoryDrift
+    decoder: DecoderDrift | None
+    subspace_distance: float
+    procrustes_error: float
