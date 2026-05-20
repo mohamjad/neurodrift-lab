@@ -103,3 +103,8 @@ def _load_mode_trials(subject_dir: Path, mode: str, tasks: tuple[int, ...]) -> t
     neural = (neural - channel_mean) / channel_scale
     return neural, _one_hot(labels)
 
+
+def load_milimbeeg_pair(
+    root: Path,
+    *,
+    subject: str = "S1",
