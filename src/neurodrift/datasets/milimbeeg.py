@@ -88,3 +88,8 @@ def _one_hot(labels: list[int]) -> Array:
 def _load_mode_trials(subject_dir: Path, mode: str, tasks: tuple[int, ...]) -> tuple[Array, Array]:
     paths = sorted(subject_dir.glob(f"*{mode}*.csv"))
     trials: list[Array] = []
+    labels: list[int] = []
+    for path in paths:
+        _, _, parsed_mode, task = _trial_metadata(path)
+        if parsed_mode == mode and task in tasks:
+            trials.append(_read_trial_csv(path))
