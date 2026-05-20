@@ -28,3 +28,8 @@ def build_inspect_ready_sample(config: SimulationConfig | None = None) -> dict[s
             "baseline": baseline.to_dict(),
             "recommended_action": "whitening_coloring_alignment",
         },
+    }
+
+
+def score_alignment_action(
+    aligner: Aligner | None = None,
