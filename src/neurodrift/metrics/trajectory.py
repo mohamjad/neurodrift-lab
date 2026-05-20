@@ -33,3 +33,8 @@ def discrete_curvature(trajectory: Array, epsilon: float = 1e-8) -> Array:
     """Estimate pointwise curvature from finite differences."""
 
     trajectory = np.asarray(trajectory, dtype=np.float64)
+    if trajectory.shape[0] < 3:
+        return np.zeros(max(trajectory.shape[0] - 2, 0), dtype=np.float64)
+    velocity = np.diff(trajectory, axis=0)
+    acceleration = np.diff(velocity, axis=0)
+    speed = np.maximum(np.linalg.norm(velocity[:-1], axis=1), epsilon)
