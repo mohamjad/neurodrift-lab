@@ -48,3 +48,8 @@ def fetch_milimbeeg_sample(
                 url = _trial_url(subject, mode, task, repeat)
                 path = subject_dir / url.rsplit("/", 1)[-1]
                 if not path.exists():
+                    try:
+                        with urllib.request.urlopen(url, timeout=timeout_s) as response:
+                            path.write_bytes(response.read())
+                    except (HTTPError, URLError, TimeoutError) as exc:
+                        raise RuntimeError(f"failed to fetch {url}") from exc
