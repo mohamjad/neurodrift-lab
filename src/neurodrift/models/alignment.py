@@ -38,3 +38,8 @@ class IdentityAligner:
 @dataclass
 class CenteringTransform:
     """Mean-shift target features to match the source session mean."""
+
+    source_mean_: Array | None = None
+    target_mean_: Array | None = None
+
+    def fit(self, source: Array, target: Array) -> CenteringTransform:
