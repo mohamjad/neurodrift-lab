@@ -18,3 +18,8 @@ class Aligner(Protocol):
     """Protocol for session alignment transforms."""
 
     def fit(self, source: Array, target: Array) -> Aligner:
+        """Fit the transform from target-space features into source-space features."""
+
+    def transform(self, target: Array) -> Array:
+        """Map target-space features into source-space features."""
+
