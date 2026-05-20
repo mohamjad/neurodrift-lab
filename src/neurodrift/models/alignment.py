@@ -23,3 +23,8 @@ class Aligner(Protocol):
     def transform(self, target: Array) -> Array:
         """Map target-space features into source-space features."""
 
+
+@dataclass
+class IdentityAligner:
+    """No-op alignment baseline."""
+
