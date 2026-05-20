@@ -18,3 +18,8 @@ trajectory metrics, decoder drift, and composite reporting.
 Added synthetic session generation, ridge decoder baseline, and alignment
 baselines.
 
+## Sprint 004
+
+Added the intent-drift evaluation environment, CLI, example report, and optional
+adapter boundaries.
+
