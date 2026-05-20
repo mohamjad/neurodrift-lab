@@ -33,3 +33,8 @@ class RidgeDecoder:
         y_mean = intent.mean(axis=0)
         x = features - x_mean
         y = intent - y_mean
+        gram = x.T @ x + self.alpha * np.eye(features.shape[1])
+        self.weights_ = np.linalg.solve(gram, x.T @ y)
+        self.bias_ = y_mean - x_mean @ self.weights_
+        return self
+
