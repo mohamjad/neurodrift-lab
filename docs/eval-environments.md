@@ -18,3 +18,8 @@ math:
   `neurodrift benchmark`.
 - NeMo Gym or Gymnasium: expose alignment choice as the action and report
   alignment gain or stability score as the reward.
+
+## BCI wrapping
+
+For online BCI systems, replace `simulate_session_pair` with a loader or stream
+adapter that returns `SessionPair`. The rest of the evaluation path is unchanged.
