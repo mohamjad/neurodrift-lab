@@ -23,3 +23,8 @@ def test_milimbeeg_loader_builds_session_pair(tmp_path) -> None:
         for task in (2, 3):
             for repeat in (1, 2):
                 _write_trial(subject_dir / f"S1R1{mode}{task}_{repeat}.csv", offset + task)
+
+    pair = load_milimbeeg_pair(tmp_path, tasks=(2, 3))
+
+    assert pair.source.neural.shape == (4, 8, 3)
+    assert pair.target.neural.shape == (4, 8, 3)
