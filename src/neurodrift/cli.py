@@ -83,3 +83,8 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark = subparsers.add_parser("benchmark", help="compare all alignment strategies")
     benchmark.add_argument("--config", type=Path, default=None)
     benchmark.add_argument("--input", type=Path, default=None, help="load a session pair NPZ")
+    benchmark.add_argument("--output", type=Path, default=None, help="write JSON report")
+    benchmark.set_defaults(func=run_benchmark)
+
+    milimbeeg = subparsers.add_parser(
+        "fetch-milimbeeg",
