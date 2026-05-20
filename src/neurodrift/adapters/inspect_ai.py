@@ -38,3 +38,5 @@ def score_alignment_action(
     """Return an alignment-gain score for an Inspect-style scorer."""
 
     pair = simulate_session_pair(config or SimulationConfig())
+    result = IntentDriftEnv(pair).evaluate(aligner or WhiteningColoringAligner())
+    return float(result.alignment_gain)
