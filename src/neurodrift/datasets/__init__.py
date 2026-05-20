@@ -3,3 +3,8 @@
 from neurodrift.datasets.milimbeeg import (
     MILIMBEEG_RAW_BASE_URL,
     fetch_milimbeeg_sample,
+    load_milimbeeg_pair,
+)
+from neurodrift.datasets.nlb import load_nlb_h5_pair
+
+__all__ = [
