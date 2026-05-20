@@ -18,3 +18,8 @@ def orthonormal_basis(samples: Array, rank: int | None = None) -> Array:
     _, _, vh = np.linalg.svd(centered, full_matrices=False)
     if rank is None:
         rank = min(samples.shape)
+    if rank <= 0:
+        raise ValueError("rank must be positive")
+    return vh[:rank].T
+
+
