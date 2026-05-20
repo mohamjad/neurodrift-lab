@@ -18,3 +18,8 @@ It is cheaper and useful as a baseline against affine-invariant geometry.
 
 ## Subspace distance
 
+Dominant neural subspaces are compared through principal angles. This captures
+whether population activity occupies the same low-dimensional region even when
+individual channels vary.
+
+## Procrustes error
