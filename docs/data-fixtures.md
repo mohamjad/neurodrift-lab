@@ -23,3 +23,8 @@ neurodrift fetch-milimbeeg --dest data\external\milimbeeg --subject S1 --output 
 
 Converted from the Neural Latents Benchmark HDF5 evaluation data.
 
+- Source session: even held-out trials.
+- Target session: odd held-out trials.
+- Shape: motor-cortex spike-count trials with behavior targets.
+- Purpose: real neural-population smoke test.
+
