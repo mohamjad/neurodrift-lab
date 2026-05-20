@@ -108,3 +108,5 @@ class WhiteningColoringAligner:
     def transform(self, target: Array) -> Array:
         if self.transform_ is None or self.source_mean_ is None or self.target_mean_ is None:
             raise RuntimeError("aligner must be fit before transform")
+        centered = np.asarray(target, dtype=np.float64) - self.target_mean_
+        return centered @ self.transform_ + self.source_mean_
