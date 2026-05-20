@@ -18,3 +18,8 @@ def main() -> None:
         json.dumps(
             {
                 "procrustes": baseline.to_dict(),
+                "whitening_coloring": covariance_aligned.to_dict(),
+            },
+            indent=2,
+        )
+    )
