@@ -103,3 +103,8 @@ def build_parser() -> argparse.ArgumentParser:
     nlb.set_defaults(func=run_convert_nlb)
     return parser
 
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    return int(args.func(args))
