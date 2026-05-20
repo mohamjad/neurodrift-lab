@@ -18,3 +18,8 @@ def save_json(payload: dict[str, Any], path: Path) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
 
 
+def save_session_pair_npz(pair: SessionPair, path: Path) -> None:
+    """Save a session pair to a compact NPZ artifact."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(
