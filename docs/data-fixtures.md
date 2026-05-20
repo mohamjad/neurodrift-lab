@@ -28,3 +28,8 @@ Converted from the Neural Latents Benchmark HDF5 evaluation data.
 - Shape: motor-cortex spike-count trials with behavior targets.
 - Purpose: real neural-population smoke test.
 
+Refresh:
+
+```powershell
+neurodrift convert-nlb --input path\to\eval_data_test.h5 --dataset mc_maze_small_20 --max-trials 80 --output data\fixtures\nlb_mc_maze_small_20.npz
+```
