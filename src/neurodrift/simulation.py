@@ -63,3 +63,8 @@ def simulate_session_pair(config: SimulationConfig) -> SessionPair:
     intent_to_latent = rng.normal(scale=0.8, size=(config.intent_dims, config.latent_dims))
     latent_static = intents @ intent_to_latent
     temporal = _temporal_basis(config.time_steps, config.latent_dims)
+    latent = latent_static[:, None, :] + 0.25 * temporal.T[None, :, :]
+
+    source_projection = rng.normal(scale=0.6, size=(config.latent_dims, config.channels))
+    rotation = _random_orthogonal(rng, config.channels)
+    gain = np.linspace(1.0, 1.0 + config.drift_strength, config.channels)
