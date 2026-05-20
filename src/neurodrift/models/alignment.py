@@ -73,3 +73,8 @@ class ProcrustesAligner:
         centered_source = source - self.source_mean_
         centered_target = target - self.target_mean_
         self.rotation_ = orthogonal_procrustes(centered_target, centered_source)
+        return self
+
+    def transform(self, target: Array) -> Array:
+        if self.rotation_ is None or self.source_mean_ is None or self.target_mean_ is None:
+            raise RuntimeError("aligner must be fit before transform")
