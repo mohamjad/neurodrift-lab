@@ -18,3 +18,8 @@ def test_session_pair_npz_roundtrip(tmp_path) -> None:
     assert np.allclose(loaded.source.neural, pair.source.neural)
     assert np.allclose(loaded.target.intent, pair.target.intent)
     assert loaded.source.session_id == pair.source.session_id
+
+
+def test_save_json_creates_parent_directory(tmp_path) -> None:
+    path = tmp_path / "reports" / "result.json"
+
