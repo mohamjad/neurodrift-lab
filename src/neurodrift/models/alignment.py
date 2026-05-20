@@ -103,3 +103,8 @@ class WhiteningColoringAligner:
         self.transform_ = matrix_invsqrt_spd(target_cov, self.epsilon) @ matrix_sqrt_spd(
             source_cov, self.epsilon
         )
+        return self
+
+    def transform(self, target: Array) -> Array:
+        if self.transform_ is None or self.source_mean_ is None or self.target_mean_ is None:
+            raise RuntimeError("aligner must be fit before transform")
