@@ -38,3 +38,8 @@ class IntentDriftEnv:
 
     def __init__(self, pair: SessionPair, decoder: RidgeDecoder | None = None) -> None:
         self.pair = pair
+        self.decoder = decoder or RidgeDecoder(alpha=1e-2)
+
+    def evaluate(self, aligner: Aligner | None = None) -> DriftEvaluationResult:
+        """Fit a source decoder and score target-session preservation."""
+
