@@ -13,3 +13,8 @@ notebook. It includes:
 - A small evaluation environment API that can later be wrapped by Inspect AI,
   METR task-standard tasks, NeMo Gym, or Gymnasium.
 - Tests and examples intended to keep the code readable and auditable.
+
+## Why this exists
+
+Most BCI repos focus on decoding performance within a session. This repo treats
+longitudinal drift as the first-class object:
