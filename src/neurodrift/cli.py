@@ -18,3 +18,8 @@ from neurodrift.simulation import SimulationConfig, simulate_session_pair
 def _load_config(path: Path | None) -> SimulationConfig:
     if path is None:
         return SimulationConfig()
+    data: dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
+    return SimulationConfig(**data)
+
+
+def _load_pair(args: argparse.Namespace):
