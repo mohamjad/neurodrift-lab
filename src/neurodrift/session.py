@@ -38,3 +38,8 @@ class SessionBatch:
 
     @property
     def flattened_neural(self) -> Array:
+        """Return observations as ``(trials * time, channels)``."""
+
+        trials, time, channels = self.neural.shape
+        return self.neural.reshape(trials * time, channels)
+
