@@ -8,3 +8,8 @@ from neurodrift.metrics.riemannian import (
 )
 from neurodrift.metrics.subspace import principal_angles, subspace_distance
 from neurodrift.metrics.trajectory import trajectory_drift
+
+__all__ = [
+    "DriftReport",
+    "affine_invariant_distance",
+    "build_drift_report",
