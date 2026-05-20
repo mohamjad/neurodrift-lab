@@ -33,3 +33,8 @@ def load_nlb_h5_pair(
     *,
     dataset: str = "mc_maze_small_20",
     spikes_key: str = "eval_spikes_heldout",
+    behavior_key: str = "eval_behavior",
+    max_trials: int | None = 80,
+) -> SessionPair:
+    """Load one NLB dataset group as an even/odd source-target session pair.
+
