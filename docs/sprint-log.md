@@ -23,3 +23,6 @@ baselines.
 Added the intent-drift evaluation environment, CLI, example report, and optional
 adapter boundaries.
 
+## Sprint 005
+
+Added tests and architecture/metric documentation.
