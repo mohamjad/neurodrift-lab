@@ -93,3 +93,8 @@ def _load_mode_trials(subject_dir: Path, mode: str, tasks: tuple[int, ...]) -> t
         _, _, parsed_mode, task = _trial_metadata(path)
         if parsed_mode == mode and task in tasks:
             trials.append(_read_trial_csv(path))
+            labels.append(task)
+    if not trials:
+        raise ValueError(f"no MILimbEEG {mode} trials found in {subject_dir}")
+    min_time = min(trial.shape[0] for trial in trials)
+    neural = np.stack([trial[:min_time] for trial in trials]).astype(np.float64)
