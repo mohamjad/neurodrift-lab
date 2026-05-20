@@ -58,3 +58,8 @@ neurodrift benchmark --input data\fixtures\nlb_mc_maze_small_20.npz
 ```text
 src/neurodrift/
   metrics/       Riemannian, subspace, trajectory, and decoder drift metrics
+  models/        Decoders and alignment baselines
+  envs/          BCI session environment abstractions
+  adapters/      Optional bridges to frontier-eval and BCI ecosystems
+tests/           Unit tests for numerical behavior and env flows
+examples/        Runnable experiments
