@@ -28,3 +28,8 @@ connects established BCI, geometry, and frontier-eval ideas.
 ## Frontier evaluation environments
 
 - Inspect AI: clean solver/scorer abstraction for model evaluation.
+- METR task-standard: containerized agent tasks with machine-verifiable scoring.
+- NeMo Gym and SWE/terminal benchmarks: environment-first evaluation patterns.
+
+## Policy
+
