@@ -43,3 +43,8 @@ def fetch_milimbeeg_sample(
     subject_dir.mkdir(parents=True, exist_ok=True)
     downloaded: list[Path] = []
     for mode in modes:
+        for task in tasks:
+            for repeat in repeats:
+                url = _trial_url(subject, mode, task, repeat)
+                path = subject_dir / url.rsplit("/", 1)[-1]
+                if not path.exists():
