@@ -18,3 +18,8 @@ ALIGNER_REGISTRY = {
     "identity": IdentityAligner,
     "center": CenteringTransform,
     "procrustes": ProcrustesAligner,
+    "whiten-color": WhiteningColoringAligner,
+}
+
+
+@dataclass(frozen=True)
