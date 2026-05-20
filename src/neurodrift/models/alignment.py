@@ -28,3 +28,8 @@ class Aligner(Protocol):
 class IdentityAligner:
     """No-op alignment baseline."""
 
+    def fit(self, source: Array, target: Array) -> IdentityAligner:
+        return self
+
+    def transform(self, target: Array) -> Array:
+        return np.asarray(target, dtype=np.float64)
