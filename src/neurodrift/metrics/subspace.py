@@ -38,3 +38,8 @@ def principal_angles(source_basis: Array, target_basis: Array) -> Array:
 
 def subspace_distance(
     source_samples: Array,
+    target_samples: Array,
+    rank: int | None = None,
+) -> float:
+    """Return RMS principal-angle distance between dominant neural subspaces."""
+
