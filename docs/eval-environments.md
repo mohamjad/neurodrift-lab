@@ -8,3 +8,8 @@ small enough to audit:
 3. Score target intent preservation.
 4. Emit drift metrics that an eval runner can consume.
 
+## Frontier-lab wrapping
+
+The environment can be wrapped by external eval systems without changing core
+math:
+
