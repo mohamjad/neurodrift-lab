@@ -23,3 +23,8 @@ connects established BCI, geometry, and frontier-eval ideas.
 - BRAND: real-time asynchronous neural decoding backend.
 - BCI simulator repos: useful for closed-loop replay and decoder stress tests.
 - MILimbEEG/OpenBCI: public multi-session EEG CSV recordings used here as a
+  real-data smoke test for session-pair loading and benchmarking.
+
+## Frontier evaluation environments
+
+- Inspect AI: clean solver/scorer abstraction for model evaluation.
