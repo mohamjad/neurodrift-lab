@@ -23,3 +23,8 @@
 - Reproducible paper-style experiment configs.
 - Benchmark cards for adaptive decoders.
 
+## Future repo splits
+
+Only split once APIs stabilize:
+
+- `neural-drift-metrics`: standalone metrics library.
