@@ -28,3 +28,7 @@ def test_env_returns_machine_readable_scores() -> None:
 def test_alignment_strategy_can_improve_target_mse() -> None:
     pair = simulate_session_pair(SimulationConfig(seed=10, drift_strength=0.25, trials=72))
     env = IntentDriftEnv(pair)
+    identity = env.evaluate()
+    procrustes = env.evaluate(ProcrustesAligner())
+
+    assert procrustes.target_mse_aligned <= identity.target_mse_aligned
