@@ -23,3 +23,8 @@ def test_env_returns_machine_readable_scores() -> None:
     assert 0.0 <= result.report.stability_score <= 1.0
     assert "alignment_gain" in payload
     assert "affine_invariant" in payload["report"]["covariance"]
+
+
+def test_alignment_strategy_can_improve_target_mse() -> None:
+    pair = simulate_session_pair(SimulationConfig(seed=10, drift_strength=0.25, trials=72))
+    env = IntentDriftEnv(pair)
