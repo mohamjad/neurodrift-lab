@@ -38,3 +38,8 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -e .[dev]
 pytest
+python examples\simulate_drift_report.py
+```
+
+Run a real-data smoke benchmark from the included MILimbEEG/OpenBCI fixture:
+
