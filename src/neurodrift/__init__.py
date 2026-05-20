@@ -8,3 +8,4 @@ __all__ = [
     "SessionBatch",
     "SessionPair",
     "run_alignment_benchmark",
+]
