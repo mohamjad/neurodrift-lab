@@ -48,3 +48,8 @@ def trajectory_drift(source: Array, target: Array) -> TrajectoryDrift:
     source = np.asarray(source, dtype=np.float64)
     target = np.asarray(target, dtype=np.float64)
     if source.shape != target.shape:
+        raise ValueError("source and target trajectories must have the same shape")
+    source_velocity = np.diff(source, axis=0)
+    target_velocity = np.diff(target, axis=0)
+    source_curvature = discrete_curvature(source)
+    target_curvature = discrete_curvature(target)
