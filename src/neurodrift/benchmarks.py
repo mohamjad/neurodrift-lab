@@ -43,3 +43,8 @@ class AlignmentBenchmarkRow:
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "name": self.name,
+            "target_mse": self.target_mse,
+            "alignment_gain": self.alignment_gain,
+            "stability_score": self.stability_score,
+            "result": self.result.to_dict(),
