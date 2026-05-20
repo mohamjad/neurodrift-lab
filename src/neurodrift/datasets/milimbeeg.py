@@ -113,3 +113,8 @@ def load_milimbeeg_pair(
     tasks: tuple[int, ...] = DEFAULT_TASKS,
 ) -> SessionPair:
     """Load a real MILimbEEG subject as imagery-to-motor session drift."""
+
+    subject_dir = Path(root) / subject
+    source_neural, source_intent = _load_mode_trials(subject_dir, source_mode, tasks)
+    target_neural, target_intent = _load_mode_trials(subject_dir, target_mode, tasks)
+    trial_count = min(source_neural.shape[0], target_neural.shape[0])
