@@ -13,3 +13,8 @@ def _write_trial(path, value: float) -> None:
         ]
     )
     header = ",0,1,2"
+    np.savetxt(path, rows, delimiter=",", header=header, comments="")
+
+
+def test_milimbeeg_loader_builds_session_pair(tmp_path) -> None:
+    subject_dir = tmp_path / "S1"
