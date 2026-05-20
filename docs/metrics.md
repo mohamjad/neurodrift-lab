@@ -13,3 +13,8 @@ structure and we want the measurement to respect the SPD manifold.
 
 ## Log-Euclidean covariance distance
 
+This compares covariance matrices after mapping them through the SPD matrix log.
+It is cheaper and useful as a baseline against affine-invariant geometry.
+
+## Subspace distance
+
