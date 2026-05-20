@@ -33,3 +33,8 @@ class AlignmentBenchmarkRow:
     def target_mse(self) -> float:
         return self.result.target_mse_aligned
 
+    @property
+    def alignment_gain(self) -> float:
+        return self.result.alignment_gain
+
+    @property
