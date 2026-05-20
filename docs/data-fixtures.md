@@ -33,3 +33,8 @@ Refresh:
 ```powershell
 neurodrift convert-nlb --input path\to\eval_data_test.h5 --dataset mc_maze_small_20 --max-trials 80 --output data\fixtures\nlb_mc_maze_small_20.npz
 ```
+
+## Notes
+
+The fixtures are intentionally small so tests and examples stay fast. Full
+experiments should point CLI commands at external dataset locations.
