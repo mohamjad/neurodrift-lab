@@ -13,3 +13,8 @@ trajectory drift, decoder drift, and stability score.
 ## Alignment benchmark
 
 ```powershell
+neurodrift benchmark --config configs\simulated_high_drift.json
+```
+
+This runs every registered alignment strategy against the same session pair and
+returns a ranked machine-readable report.
