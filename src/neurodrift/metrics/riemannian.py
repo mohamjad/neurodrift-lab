@@ -33,3 +33,8 @@ def affine_invariant_distance(source: Array, target: Array, epsilon: float = 1e-
     """Affine-invariant geodesic distance on SPD matrices.
 
     The distance is ``||log(A^{-1/2} B A^{-1/2})||_F``. It is a standard
+    covariance drift measure in Riemannian BCI pipelines.
+    """
+
+    source = regularize_spd(source, epsilon)
+    target = regularize_spd(target, epsilon)
