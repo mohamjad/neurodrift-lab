@@ -13,3 +13,8 @@ Array = NDArray[np.float64]
 @dataclass
 class RidgeDecoder:
     """Small deterministic ridge decoder for neural features to intent vectors."""
+
+    alpha: float = 1e-3
+    weights_: Array | None = None
+    bias_: Array | None = None
+
