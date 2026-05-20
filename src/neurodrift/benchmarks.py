@@ -53,3 +53,8 @@ class AlignmentBenchmarkRow:
 
 @dataclass(frozen=True)
 class AlignmentBenchmark:
+    """Ranked alignment benchmark for a source-target session pair."""
+
+    rows: tuple[AlignmentBenchmarkRow, ...]
+
+    @property
