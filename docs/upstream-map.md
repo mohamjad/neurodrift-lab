@@ -33,3 +33,6 @@ connects established BCI, geometry, and frontier-eval ideas.
 
 ## Policy
 
+External code should be integrated as a dependency or adapter. Do not paste
+large upstream implementations into this repo unless license review and
+attribution are explicit.
