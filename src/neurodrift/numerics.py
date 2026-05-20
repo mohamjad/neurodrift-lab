@@ -63,3 +63,8 @@ def frobenius_norm(matrix: Array) -> float:
 def safe_covariance(samples: Array, epsilon: float = 1e-6) -> Array:
     """Estimate an SPD covariance matrix from observations shaped ``(n, d)``."""
 
+    samples = as_float_array(samples)
+    if samples.ndim != 2:
+        raise ValueError("samples must be shaped (observations, features)")
+    if samples.shape[0] < 2:
+        raise ValueError("at least two observations are required")
