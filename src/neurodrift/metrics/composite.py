@@ -63,3 +63,8 @@ def build_drift_report(
         source_session=pair.source.session_id,
         target_session=pair.target.session_id,
         covariance=covariance,
+        trajectory=trajectory,
+        decoder=decoder,
+        subspace_distance=subspace,
+        procrustes_error=procrustes,
+        stability_score=float(stability_score),
