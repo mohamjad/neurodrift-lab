@@ -38,3 +38,8 @@ def discrete_curvature(trajectory: Array, epsilon: float = 1e-8) -> Array:
     velocity = np.diff(trajectory, axis=0)
     acceleration = np.diff(velocity, axis=0)
     speed = np.maximum(np.linalg.norm(velocity[:-1], axis=1), epsilon)
+    accel_norm = np.linalg.norm(acceleration, axis=1)
+    return accel_norm / (speed**2)
+
+
+def trajectory_drift(source: Array, target: Array) -> TrajectoryDrift:
