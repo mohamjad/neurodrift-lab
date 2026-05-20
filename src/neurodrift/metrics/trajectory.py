@@ -13,3 +13,8 @@ Array = NDArray[np.float64]
 @dataclass(frozen=True)
 class TrajectoryDrift:
     """Movement summary for two latent trajectories."""
+
+    mean_position_shift: float
+    mean_velocity_shift: float
+    path_length_ratio: float
+    curvature_shift: float
