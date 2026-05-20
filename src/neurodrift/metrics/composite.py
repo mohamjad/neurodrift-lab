@@ -38,3 +38,8 @@ def build_drift_report(
     pair: SessionPair,
     *,
     source_decoder_outputs=None,
+    target_decoder_outputs=None,
+) -> DriftReport:
+    """Build a scalar drift report from paired source and target sessions."""
+
+    covariance = covariance_drift(pair.source.flattened_neural, pair.target.flattened_neural)
