@@ -53,3 +53,8 @@ class SessionBatch:
 @dataclass(frozen=True)
 class SessionPair:
     """A source and target session used for drift measurement."""
+
+    source: SessionBatch
+    target: SessionBatch
+
+    def __post_init__(self) -> None:
