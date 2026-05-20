@@ -23,3 +23,8 @@ class CovarianceDrift:
     """Summary of SPD covariance movement between two sessions."""
 
     source_covariance: Array
+    target_covariance: Array
+    affine_invariant: float
+    log_euclidean: float
+    covariance_trace_ratio: float
+
