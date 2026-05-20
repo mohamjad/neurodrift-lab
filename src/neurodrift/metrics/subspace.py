@@ -48,3 +48,8 @@ def subspace_distance(
     angles = principal_angles(source_basis, target_basis)
     return float(np.sqrt(np.mean(angles**2)))
 
+
+def orthogonal_procrustes(source: Array, target: Array) -> Array:
+    """Fit the orthogonal matrix that best maps source samples to target samples."""
+
+    source = np.asarray(source, dtype=np.float64)
