@@ -18,3 +18,8 @@ def _require_h5py():
     except ImportError as exc:  # pragma: no cover - optional dependency path
         raise RuntimeError("Install neurodrift-lab[integrations] to load NLB HDF5 files") from exc
     return h5py
+
+
+def _trial_intent(behavior: Array) -> Array:
+    if behavior.ndim == 3:
+        return behavior.mean(axis=1)
