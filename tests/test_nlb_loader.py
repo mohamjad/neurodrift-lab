@@ -18,3 +18,5 @@ def test_nlb_h5_loader_builds_even_odd_pair(tmp_path) -> None:
 
     assert pair.source.neural.shape == (5, 5, 4)
     assert pair.target.neural.shape == (5, 5, 4)
+    assert pair.source.intent.shape == (5, 2)
+    assert pair.source.session_id == "mc_maze_small_20-even"
