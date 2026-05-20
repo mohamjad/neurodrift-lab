@@ -18,3 +18,8 @@ class SimulationConfig:
 
     seed: int = 7
     trials: int = 96
+    time_steps: int = 40
+    channels: int = 16
+    intent_dims: int = 2
+    latent_dims: int = 6
+    drift_strength: float = 0.15
