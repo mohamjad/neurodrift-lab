@@ -3,3 +3,8 @@
   "trials": 128,
   "time_steps": 48,
   "channels": 20,
+  "intent_dims": 2,
+  "latent_dims": 6,
+  "drift_strength": 0.24,
+  "noise_scale": 0.08
+}
