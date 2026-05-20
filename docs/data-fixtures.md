@@ -18,3 +18,8 @@ Refresh:
 ```powershell
 neurodrift fetch-milimbeeg --dest data\external\milimbeeg --subject S1 --output data\fixtures\milimbeeg_s1.npz
 ```
+
+## `data/fixtures/nlb_mc_maze_small_20.npz`
+
+Converted from the Neural Latents Benchmark HDF5 evaluation data.
+
