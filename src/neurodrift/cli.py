@@ -38,3 +38,8 @@ def run_simulation(args: argparse.Namespace) -> int:
     aligner_cls = ALIGNER_REGISTRY[args.aligner]
     pair = _load_pair(args)
     result = IntentDriftEnv(pair).evaluate(aligner_cls())
+    _emit(result.to_dict(), args.output)
+    return 0
+
+
+def run_benchmark(args: argparse.Namespace) -> int:
