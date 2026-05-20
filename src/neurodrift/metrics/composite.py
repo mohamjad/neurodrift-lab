@@ -43,3 +43,8 @@ def build_drift_report(
     """Build a scalar drift report from paired source and target sessions."""
 
     covariance = covariance_drift(pair.source.flattened_neural, pair.target.flattened_neural)
+    trajectory = trajectory_drift(pair.source.trial_features, pair.target.trial_features)
+    subspace = subspace_distance(pair.source.flattened_neural, pair.target.flattened_neural)
+    procrustes = procrustes_error(pair.source.trial_features, pair.target.trial_features)
+    decoder = None
+    decoder_penalty = 0.0
