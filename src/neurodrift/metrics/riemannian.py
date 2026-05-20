@@ -48,3 +48,8 @@ def log_euclidean_distance(source: Array, target: Array, epsilon: float = 1e-8) 
     return frobenius_norm(matrix_log_spd(source, epsilon) - matrix_log_spd(target, epsilon))
 
 
+def covariance_drift(
+    source_samples: Array,
+    target_samples: Array,
+    epsilon: float = 1e-6,
+) -> CovarianceDrift:
