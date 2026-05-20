@@ -88,3 +88,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     milimbeeg = subparsers.add_parser(
         "fetch-milimbeeg",
+        help="download a small public MILimbEEG subset and convert it to NPZ",
+    )
+    milimbeeg.add_argument("--dest", type=Path, default=Path("data/external/milimbeeg"))
+    milimbeeg.add_argument("--subject", default="S1")
+    milimbeeg.add_argument("--output", type=Path, default=Path("data/fixtures/milimbeeg_s1.npz"))
