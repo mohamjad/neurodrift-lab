@@ -8,3 +8,8 @@
 - Baseline decoders and alignment methods.
 - Evaluation environment with machine-readable scores.
 
+## Phase 2: Upstream integrations
+
+- Optional pyRiemann-backed implementations.
+- Optional geomstats manifolds.
+- Inspect AI task wrapper.
