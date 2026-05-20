@@ -48,3 +48,8 @@ class CenteringTransform:
         self.source_mean_ = source.mean(axis=0, keepdims=True)
         self.target_mean_ = target.mean(axis=0, keepdims=True)
         return self
+
+    def transform(self, target: Array) -> Array:
+        if self.source_mean_ is None or self.target_mean_ is None:
+            raise RuntimeError("aligner must be fit before transform")
+        return np.asarray(target, dtype=np.float64) - self.target_mean_ + self.source_mean_
