@@ -23,3 +23,6 @@ def test_session_pair_npz_roundtrip(tmp_path) -> None:
 def test_save_json_creates_parent_directory(tmp_path) -> None:
     path = tmp_path / "reports" / "result.json"
 
+    save_json({"score": 0.5}, path)
+
+    assert json.loads(path.read_text(encoding="utf-8")) == {"score": 0.5}
