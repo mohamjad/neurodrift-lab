@@ -8,3 +8,8 @@ import numpy as np
 from numpy.typing import NDArray
 
 Array = NDArray[np.float64]
+
+
+@dataclass(frozen=True)
+class DecoderDrift:
+    """Decoder-output stability summary."""
