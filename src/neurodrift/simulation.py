@@ -83,3 +83,8 @@ def simulate_session_pair(config: SimulationConfig) -> SessionPair:
     source_neural += rng.normal(scale=config.noise_scale, size=source_neural.shape)
     target_neural += rng.normal(scale=config.noise_scale, size=target_neural.shape)
 
+    return SessionPair(
+        source=SessionBatch(
+            neural=source_neural.astype(np.float64),
+            intent=intents.astype(np.float64),
+            session_id="source",
