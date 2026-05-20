@@ -58,3 +58,8 @@ class CenteringTransform:
 @dataclass
 class ProcrustesAligner:
     """Orthogonal alignment based on paired trial features."""
+
+    rotation_: Array | None = None
+    source_mean_: Array | None = None
+    target_mean_: Array | None = None
+
