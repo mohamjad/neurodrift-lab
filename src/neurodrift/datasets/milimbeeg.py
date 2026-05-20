@@ -33,3 +33,8 @@ def fetch_milimbeeg_sample(
     subject: str = "S1",
     tasks: tuple[int, ...] = DEFAULT_TASKS,
     repeats: tuple[int, ...] = DEFAULT_REPEATS,
+    modes: tuple[str, ...] = ("I", "M"),
+    timeout_s: float = 30.0,
+) -> list[Path]:
+    """Download a small public MILimbEEG subset for real-data smoke tests."""
+
