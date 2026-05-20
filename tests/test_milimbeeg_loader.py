@@ -18,3 +18,8 @@ def _write_trial(path, value: float) -> None:
 
 def test_milimbeeg_loader_builds_session_pair(tmp_path) -> None:
     subject_dir = tmp_path / "S1"
+    subject_dir.mkdir()
+    for mode, offset in (("I", 0.0), ("M", 1.0)):
+        for task in (2, 3):
+            for repeat in (1, 2):
+                _write_trial(subject_dir / f"S1R1{mode}{task}_{repeat}.csv", offset + task)
