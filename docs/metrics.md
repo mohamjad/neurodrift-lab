@@ -33,3 +33,8 @@ rotation.
 Latent or trial-level trajectories are scored by:
 
 - mean position shift
+- mean velocity shift
+- path-length ratio
+- discrete curvature shift
+
+These scores are meant to capture neuroplastic movement as a path through
