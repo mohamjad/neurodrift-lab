@@ -48,3 +48,8 @@ class SessionBatch:
         """Return simple per-trial neural features for decoders and baselines."""
 
         return self.neural.mean(axis=1)
+
+
+@dataclass(frozen=True)
+class SessionPair:
+    """A source and target session used for drift measurement."""
