@@ -33,3 +33,8 @@ def _emit(payload: dict[str, Any], output: Path | None) -> None:
         save_json(payload, output)
     print(json.dumps(payload, indent=2))
 
+
+def run_simulation(args: argparse.Namespace) -> int:
+    aligner_cls = ALIGNER_REGISTRY[args.aligner]
+    pair = _load_pair(args)
+    result = IntentDriftEnv(pair).evaluate(aligner_cls())
