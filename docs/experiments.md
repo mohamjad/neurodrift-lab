@@ -58,3 +58,5 @@ neurodrift benchmark --input data\fixtures\nlb_mc_maze_small_20.npz
 ```
 
 The adapter splits held-out trials into even/odd pseudo-sessions. That is a
+smoke test for real motor-cortex population data, not a claim that NLB itself is
+a longitudinal drift dataset.
