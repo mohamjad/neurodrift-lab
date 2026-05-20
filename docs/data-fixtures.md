@@ -13,3 +13,8 @@ recordings.
 - Shape: EEG trials with 16 channels and 125 Hz sampling metadata.
 - Purpose: real multi-session EEG drift smoke test.
 
+Refresh:
+
+```powershell
+neurodrift fetch-milimbeeg --dest data\external\milimbeeg --subject S1 --output data\fixtures\milimbeeg_s1.npz
+```
