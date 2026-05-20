@@ -3,3 +3,8 @@
 from neurodrift.models.alignment import (
     CenteringTransform,
     IdentityAligner,
+    ProcrustesAligner,
+    WhiteningColoringAligner,
+)
+from neurodrift.models.decoders import RidgeDecoder
+
