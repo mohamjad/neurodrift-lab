@@ -73,3 +73,8 @@ class AlignmentBenchmark:
         }
 
 
+def run_alignment_benchmark(
+    pair: SessionPair,
+    aligner_names: tuple[str, ...] | None = None,
+) -> AlignmentBenchmark:
+    """Evaluate a suite of alignment strategies on one session pair."""
