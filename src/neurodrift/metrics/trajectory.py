@@ -58,3 +58,6 @@ def trajectory_drift(source: Array, target: Array) -> TrajectoryDrift:
         mean_velocity_shift=float(np.linalg.norm(source_velocity - target_velocity, axis=1).mean()),
         path_length_ratio=path_length(target) / max(path_length(source), 1e-8),
         curvature_shift=float(np.abs(source_curvature - target_curvature).mean())
+        if source_curvature.size
+        else 0.0,
+    )
