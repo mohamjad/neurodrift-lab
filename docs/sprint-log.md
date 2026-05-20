@@ -13,3 +13,8 @@ session containers.
 Added numerical SPD helpers, Riemannian covariance drift, subspace metrics,
 trajectory metrics, decoder drift, and composite reporting.
 
+## Sprint 003
+
+Added synthetic session generation, ridge decoder baseline, and alignment
+baselines.
+
