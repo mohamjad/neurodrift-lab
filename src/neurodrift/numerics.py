@@ -78,3 +78,5 @@ def zscore(samples: Array, epsilon: float = 1e-8) -> Array:
     """Column-wise standardization."""
 
     samples = as_float_array(samples)
+    scale = np.maximum(samples.std(axis=0, keepdims=True), epsilon)
+    return (samples - samples.mean(axis=0, keepdims=True)) / scale
