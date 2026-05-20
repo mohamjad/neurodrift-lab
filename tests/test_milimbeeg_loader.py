@@ -28,3 +28,5 @@ def test_milimbeeg_loader_builds_session_pair(tmp_path) -> None:
 
     assert pair.source.neural.shape == (4, 8, 3)
     assert pair.target.neural.shape == (4, 8, 3)
+    assert pair.source.intent.shape == (4, 2)
+    assert pair.source.session_id == "S1-I"
