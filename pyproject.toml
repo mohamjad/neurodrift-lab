@@ -28,3 +28,8 @@ integrations = [
   "geomstats>=2.7",
 ]
 
+[project.scripts]
+neurodrift = "neurodrift.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
