@@ -18,3 +18,8 @@ def build_inspect_ready_sample(config: SimulationConfig | None = None) -> dict[s
     """Return a serializable task sample for an Inspect-style solver/scorer."""
 
     pair = simulate_session_pair(config or SimulationConfig())
+    env = IntentDriftEnv(pair)
+    baseline = env.evaluate()
+    return {
+        "input": "Choose and justify an alignment strategy for the target BCI session.",
+        "metadata": {
