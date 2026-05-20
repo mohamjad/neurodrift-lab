@@ -23,3 +23,8 @@ def symmetrize(matrix: Array) -> Array:
     return (matrix + matrix.T) / 2.0
 
 
+def regularize_spd(matrix: Array, epsilon: float = 1e-6) -> Array:
+    """Return a numerically SPD matrix by eigenvalue clipping."""
+
+    if epsilon <= 0:
+        raise ValueError("epsilon must be positive")
