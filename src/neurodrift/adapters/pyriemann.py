@@ -18,3 +18,6 @@ def pyriemann_distance(source_covariance: Array, target_covariance: Array) -> fl
 
     try:
         from pyriemann.utils.distance import distance_riemann
+    except ImportError as exc:  # pragma: no cover - optional dependency path
+        raise RuntimeError("Install neurodrift-lab[integrations] to use pyRiemann") from exc
+    return float(distance_riemann(source_covariance, target_covariance))
