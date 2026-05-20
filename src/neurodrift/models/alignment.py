@@ -63,3 +63,8 @@ class ProcrustesAligner:
     source_mean_: Array | None = None
     target_mean_: Array | None = None
 
+    def fit(self, source: Array, target: Array) -> ProcrustesAligner:
+        source = np.asarray(source, dtype=np.float64)
+        target = np.asarray(target, dtype=np.float64)
+        if source.shape != target.shape:
+            raise ValueError("source and target must have the same shape")
