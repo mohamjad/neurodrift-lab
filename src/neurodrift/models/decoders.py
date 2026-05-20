@@ -18,3 +18,8 @@ class RidgeDecoder:
     weights_: Array | None = None
     bias_: Array | None = None
 
+    def fit(self, features: Array, intent: Array) -> RidgeDecoder:
+        """Fit decoder weights."""
+
+        features = np.asarray(features, dtype=np.float64)
+        intent = np.asarray(intent, dtype=np.float64)
