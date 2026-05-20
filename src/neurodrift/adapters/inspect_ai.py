@@ -13,3 +13,8 @@ from neurodrift.envs.intent_drift import IntentDriftEnv
 from neurodrift.models.alignment import Aligner, WhiteningColoringAligner
 from neurodrift.simulation import SimulationConfig, simulate_session_pair
 
+
+def build_inspect_ready_sample(config: SimulationConfig | None = None) -> dict[str, Any]:
+    """Return a serializable task sample for an Inspect-style solver/scorer."""
+
+    pair = simulate_session_pair(config or SimulationConfig())
