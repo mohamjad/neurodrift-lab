@@ -13,3 +13,8 @@ Array = NDArray[np.float64]
 @dataclass(frozen=True)
 class DecoderDrift:
     """Decoder-output stability summary."""
+
+    mse: float
+    cosine_error: float
+    gain_ratio: float
+    bias_shift: float
