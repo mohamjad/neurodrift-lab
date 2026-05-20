@@ -43,3 +43,8 @@ def load_nlb_h5_pair(
     matched pseudo-sessions while preserving the original spike and behavior
     arrays.
     """
+
+    h5py = _require_h5py()
+    with h5py.File(path, "r") as handle:
+        if dataset not in handle:
+            raise ValueError(f"dataset group not found: {dataset}")
