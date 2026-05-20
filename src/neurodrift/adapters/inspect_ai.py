@@ -8,3 +8,8 @@ frontier-eval tooling into core numerical tests.
 from __future__ import annotations
 
 from typing import Any
+
+from neurodrift.envs.intent_drift import IntentDriftEnv
+from neurodrift.models.alignment import Aligner, WhiteningColoringAligner
+from neurodrift.simulation import SimulationConfig, simulate_session_pair
+
