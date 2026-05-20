@@ -33,3 +33,8 @@ class IntentDriftEnv:
 
     The environment is intentionally not tied to one RL framework. It exposes a
     stable ``evaluate`` method that can be wrapped by Inspect AI, METR tasks, or
+    Gym-style interfaces later.
+    """
+
+    def __init__(self, pair: SessionPair, decoder: RidgeDecoder | None = None) -> None:
+        self.pair = pair
