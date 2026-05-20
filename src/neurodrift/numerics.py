@@ -18,3 +18,8 @@ def symmetrize(matrix: Array) -> Array:
     """Project a square matrix onto the symmetric matrices."""
 
     matrix = as_float_array(matrix)
+    if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
+        raise ValueError("matrix must be square")
+    return (matrix + matrix.T) / 2.0
+
+
