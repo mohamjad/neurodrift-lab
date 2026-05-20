@@ -8,3 +8,8 @@ intended to replace full dataset downloads.
 Converted from a small subject subset of the public MILimbEEG/OpenBCI CSV
 recordings.
 
+- Source session: subject S1 motor imagery trials.
+- Target session: subject S1 motor execution trials.
+- Shape: EEG trials with 16 channels and 125 Hz sampling metadata.
+- Purpose: real multi-session EEG drift smoke test.
+
