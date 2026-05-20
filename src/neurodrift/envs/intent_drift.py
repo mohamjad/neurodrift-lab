@@ -23,3 +23,8 @@ class DriftEvaluationResult:
     report: DriftReport
 
     def to_dict(self) -> dict[str, Any]:
+        payload = asdict(self)
+        payload["report"] = self.report.to_dict()
+        return payload
+
+
