@@ -23,3 +23,8 @@ class SessionBatch:
 
     neural: Array
     intent: Array
+    session_id: str
+    sample_rate_hz: float = 100.0
+
+    def __post_init__(self) -> None:
+        if self.neural.ndim != 3:
