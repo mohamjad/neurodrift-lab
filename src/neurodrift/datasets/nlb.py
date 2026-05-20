@@ -28,3 +28,8 @@ def _trial_intent(behavior: Array) -> Array:
     raise ValueError("NLB behavior must be shaped (trials, time, dims) or (trials, dims)")
 
 
+def load_nlb_h5_pair(
+    path: Path,
+    *,
+    dataset: str = "mc_maze_small_20",
+    spikes_key: str = "eval_spikes_heldout",
