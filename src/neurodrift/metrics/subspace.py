@@ -43,3 +43,8 @@ def subspace_distance(
 ) -> float:
     """Return RMS principal-angle distance between dominant neural subspaces."""
 
+    source_basis = orthonormal_basis(source_samples, rank)
+    target_basis = orthonormal_basis(target_samples, rank)
+    angles = principal_angles(source_basis, target_basis)
+    return float(np.sqrt(np.mean(angles**2)))
+
