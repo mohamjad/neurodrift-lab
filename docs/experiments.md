@@ -23,3 +23,8 @@ returns a ranked machine-readable report.
 
 - `target_mse_aligned`: lower is better.
 - `alignment_gain`: positive means adaptation improved target decoding.
+- `stability_score`: compact score combining geometry and decoder drift.
+- `affine_invariant`: SPD covariance movement between sessions.
+- `procrustes_error`: residual after best paired orthogonal alignment.
+
+Use the simulator presets to test the machinery. Replace the simulator with
