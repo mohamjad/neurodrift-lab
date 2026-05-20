@@ -13,3 +13,8 @@ def main() -> None:
     pair = simulate_session_pair(SimulationConfig(seed=11, drift_strength=0.22))
     env = IntentDriftEnv(pair)
     baseline = env.evaluate(ProcrustesAligner())
+    covariance_aligned = env.evaluate(WhiteningColoringAligner())
+    print(
+        json.dumps(
+            {
+                "procrustes": baseline.to_dict(),
