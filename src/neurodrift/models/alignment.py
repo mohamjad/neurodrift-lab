@@ -88,3 +88,8 @@ class WhiteningColoringAligner:
 
     source_mean_: Array | None = None
     target_mean_: Array | None = None
+    transform_: Array | None = None
+    epsilon: float = 1e-6
+
+    def fit(self, source: Array, target: Array) -> WhiteningColoringAligner:
+        source = np.asarray(source, dtype=np.float64)
