@@ -68,3 +68,8 @@ class ProcrustesAligner:
         target = np.asarray(target, dtype=np.float64)
         if source.shape != target.shape:
             raise ValueError("source and target must have the same shape")
+        self.source_mean_ = source.mean(axis=0, keepdims=True)
+        self.target_mean_ = target.mean(axis=0, keepdims=True)
+        centered_source = source - self.source_mean_
+        centered_target = target - self.target_mean_
+        self.rotation_ = orthogonal_procrustes(centered_target, centered_source)
