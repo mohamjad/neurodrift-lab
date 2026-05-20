@@ -23,3 +23,8 @@ _FILE_RE = re.compile(r"(?P<subject>S\d+)R(?P<run>\d+)(?P<mode>[IM])(?P<task>\d+
 
 
 def _trial_url(subject: str, mode: str, task: int, repeat: int, run: int = 1) -> str:
+    name = f"{subject}R{run}{mode}{task}_{repeat}.csv"
+    return f"{MILIMBEEG_RAW_BASE_URL}/{subject}/{name}"
+
+
+def fetch_milimbeeg_sample(
