@@ -8,3 +8,8 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 
 import numpy as np
+from numpy.typing import NDArray
+
+from neurodrift.session import SessionBatch, SessionPair
+
+Array = NDArray[np.float64]
