@@ -33,3 +33,8 @@ def decoder_drift(source_outputs: Array, target_outputs: Array) -> DecoderDrift:
     denom = np.maximum(source_norm * target_norm, 1e-8)
     cosine = np.sum(source_outputs * target_outputs, axis=1) / denom
     return DecoderDrift(
+        mse=float(np.mean(residual**2)),
+        cosine_error=float(np.mean(1.0 - np.clip(cosine, -1.0, 1.0))),
+        gain_ratio=float(np.mean(target_norm) / max(float(np.mean(source_norm)), 1e-8)),
+        bias_shift=float(np.linalg.norm(target_outputs.mean(axis=0) - source_outputs.mean(axis=0))),
+    )
