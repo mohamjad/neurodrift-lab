@@ -93,3 +93,8 @@ class WhiteningColoringAligner:
 
     def fit(self, source: Array, target: Array) -> WhiteningColoringAligner:
         source = np.asarray(source, dtype=np.float64)
+        target = np.asarray(target, dtype=np.float64)
+        if source.shape[1] != target.shape[1]:
+            raise ValueError("source and target must have the same feature dimension")
+        self.source_mean_ = source.mean(axis=0, keepdims=True)
+        self.target_mean_ = target.mean(axis=0, keepdims=True)
