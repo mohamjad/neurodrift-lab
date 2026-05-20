@@ -33,3 +33,8 @@ def build_inspect_ready_sample(config: SimulationConfig | None = None) -> dict[s
 
 def score_alignment_action(
     aligner: Aligner | None = None,
+    config: SimulationConfig | None = None,
+) -> float:
+    """Return an alignment-gain score for an Inspect-style scorer."""
+
+    pair = simulate_session_pair(config or SimulationConfig())
