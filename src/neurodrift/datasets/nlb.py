@@ -3,3 +3,8 @@
 from __future__ import annotations
 
 from pathlib import Path
+
+import numpy as np
+from numpy.typing import NDArray
+
+from neurodrift.session import SessionBatch, SessionPair
