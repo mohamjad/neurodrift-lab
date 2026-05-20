@@ -48,3 +48,8 @@ def matrix_sqrt_spd(matrix: Array, epsilon: float = 1e-8) -> Array:
 
 
 def matrix_invsqrt_spd(matrix: Array, epsilon: float = 1e-8) -> Array:
+    """Inverse square root for symmetric positive-definite matrices."""
+
+    vals, vecs = np.linalg.eigh(regularize_spd(matrix, epsilon))
+    return symmetrize((vecs * (1.0 / np.sqrt(vals))) @ vecs.T)
+
