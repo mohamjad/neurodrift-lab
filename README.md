@@ -63,3 +63,8 @@ src/neurodrift/
   adapters/      Optional bridges to frontier-eval and BCI ecosystems
 tests/           Unit tests for numerical behavior and env flows
 examples/        Runnable experiments
+docs/            Design notes, roadmap, and upstream integration map
+configs/         Example experiment configs
+```
+
+## Design principles
