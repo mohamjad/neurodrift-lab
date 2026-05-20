@@ -43,3 +43,8 @@ def _smooth_intents(rng: np.random.Generator, trials: int, intent_dims: int) -> 
     scale = np.maximum(smoothed.std(axis=0, keepdims=True), 1e-8)
     return (smoothed - smoothed.mean(axis=0, keepdims=True)) / scale
 
+
+def _temporal_basis(time_steps: int, latent_dims: int) -> Array:
+    time = np.linspace(0.0, 1.0, time_steps)
+    basis = []
+    for freq in range(1, latent_dims + 1):
