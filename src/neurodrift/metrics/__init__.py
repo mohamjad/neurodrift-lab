@@ -13,3 +13,8 @@ __all__ = [
     "DriftReport",
     "affine_invariant_distance",
     "build_drift_report",
+    "covariance_drift",
+    "log_euclidean_distance",
+    "principal_angles",
+    "subspace_distance",
+    "trajectory_drift",
