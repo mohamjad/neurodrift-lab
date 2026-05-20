@@ -38,3 +38,8 @@ def affine_invariant_distance(source: Array, target: Array, epsilon: float = 1e-
 
     source = regularize_spd(source, epsilon)
     target = regularize_spd(target, epsilon)
+    whitened = matrix_invsqrt_spd(source, epsilon) @ target @ matrix_invsqrt_spd(source, epsilon)
+    return frobenius_norm(matrix_log_spd(whitened, epsilon))
+
+
+def log_euclidean_distance(source: Array, target: Array, epsilon: float = 1e-8) -> float:
