@@ -18,3 +18,8 @@ def test_subspace_distance_is_near_zero_for_rotated_basis() -> None:
 def test_procrustes_alignment_reduces_paired_trial_error() -> None:
     rng = np.random.default_rng(4)
     source = rng.normal(size=(80, 8))
+    q, _ = np.linalg.qr(rng.normal(size=(8, 8)))
+    target = source @ q + 0.05 * rng.normal(size=(80, 8))
+
+    raw_error = np.linalg.norm(source - target) / np.linalg.norm(source)
+    aligned = ProcrustesAligner().fit(source, target).transform(target)
