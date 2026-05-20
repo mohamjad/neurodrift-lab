@@ -68,3 +68,8 @@ def safe_covariance(samples: Array, epsilon: float = 1e-6) -> Array:
         raise ValueError("samples must be shaped (observations, features)")
     if samples.shape[0] < 2:
         raise ValueError("at least two observations are required")
+    cov = np.cov(samples, rowvar=False)
+    if cov.ndim == 0:
+        cov = np.array([[float(cov)]])
+    return regularize_spd(cov, epsilon)
+
