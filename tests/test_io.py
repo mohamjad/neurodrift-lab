@@ -13,3 +13,8 @@ def test_session_pair_npz_roundtrip(tmp_path) -> None:
     path = tmp_path / "pair.npz"
 
     save_session_pair_npz(pair, path)
+    loaded = load_session_pair_npz(path)
+
+    assert np.allclose(loaded.source.neural, pair.source.neural)
+    assert np.allclose(loaded.target.intent, pair.target.intent)
+    assert loaded.source.session_id == pair.source.session_id
