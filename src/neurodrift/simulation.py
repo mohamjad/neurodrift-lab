@@ -23,3 +23,8 @@ class SimulationConfig:
     intent_dims: int = 2
     latent_dims: int = 6
     drift_strength: float = 0.15
+    noise_scale: float = 0.08
+    sample_rate_hz: float = 100.0
+
+
+def _random_orthogonal(rng: np.random.Generator, dims: int) -> Array:
