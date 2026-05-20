@@ -13,3 +13,8 @@ connects established BCI, geometry, and frontier-eval ideas.
 
 - NoMAD: strong reference for stabilizing BCI with latent dynamics alignment.
 - LFADS and Neural Data Transformers: upstream-style tools for extracting
+  denoised latent dynamics from neural populations.
+- MARBLE: geometric deep learning approach for latent vector fields.
+- Neural Latents Benchmark: real neural population HDF5 data can be converted
+  through `neurodrift convert-nlb` for motor-cortex smoke tests.
+
