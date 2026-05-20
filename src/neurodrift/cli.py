@@ -93,3 +93,8 @@ def build_parser() -> argparse.ArgumentParser:
     milimbeeg.add_argument("--dest", type=Path, default=Path("data/external/milimbeeg"))
     milimbeeg.add_argument("--subject", default="S1")
     milimbeeg.add_argument("--output", type=Path, default=Path("data/fixtures/milimbeeg_s1.npz"))
+    milimbeeg.set_defaults(func=run_fetch_milimbeeg)
+
+    nlb = subparsers.add_parser("convert-nlb", help="convert an NLB HDF5 group to NPZ")
+    nlb.add_argument("--input", type=Path, required=True)
+    nlb.add_argument("--dataset", default="mc_maze_small_20")
