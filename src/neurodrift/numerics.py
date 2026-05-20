@@ -28,3 +28,8 @@ def regularize_spd(matrix: Array, epsilon: float = 1e-6) -> Array:
 
     if epsilon <= 0:
         raise ValueError("epsilon must be positive")
+    vals, vecs = np.linalg.eigh(symmetrize(matrix))
+    vals = np.maximum(vals, epsilon)
+    return symmetrize((vecs * vals) @ vecs.T)
+
+
