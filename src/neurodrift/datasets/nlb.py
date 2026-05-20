@@ -73,3 +73,8 @@ def load_nlb_h5_pair(
             neural=spikes[source_idx],
             intent=intent[source_idx],
             session_id=f"{dataset}-even",
+            sample_rate_hz=50.0,
+        ),
+        target=SessionBatch(
+            neural=spikes[target_idx],
+            intent=intent[target_idx],
