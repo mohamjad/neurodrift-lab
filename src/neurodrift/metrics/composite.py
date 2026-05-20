@@ -13,3 +13,8 @@ from neurodrift.session import SessionPair
 
 
 @dataclass(frozen=True)
+class DriftReport:
+    """End-to-end drift report for one session pair."""
+
+    source_session: str
+    target_session: str
