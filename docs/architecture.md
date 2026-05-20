@@ -23,3 +23,8 @@ sessions that share channel and intent dimensions.
 - `IdentityAligner`: no-op baseline.
 - `CenteringTransform`: corrects mean shifts.
 - `ProcrustesAligner`: paired orthogonal alignment.
+- `WhiteningColoringAligner`: covariance-level session alignment.
+
+## Environment stack
+
+`IntentDriftEnv` fits a source decoder, applies an alignment strategy to target
