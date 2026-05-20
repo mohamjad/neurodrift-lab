@@ -23,3 +23,8 @@ class DriftReport:
     decoder: DecoderDrift | None
     subspace_distance: float
     procrustes_error: float
+    stability_score: float
+
+    def to_dict(self) -> dict[str, Any]:
+        """Serialize scalar report values for logs, JSON, and eval scorers."""
+
