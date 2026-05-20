@@ -23,3 +23,8 @@ whether population activity occupies the same low-dimensional region even when
 individual channels vary.
 
 ## Procrustes error
+
+Paired trial features are aligned with the best orthogonal transform. Residual
+error is a direct estimate of how much cannot be explained by simple manifold
+rotation.
+
