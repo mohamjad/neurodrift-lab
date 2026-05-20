@@ -28,3 +28,8 @@ class DriftEvaluationResult:
         return payload
 
 
+class IntentDriftEnv:
+    """Small deterministic BCI evaluation environment.
+
+    The environment is intentionally not tied to one RL framework. It exposes a
+    stable ``evaluate`` method that can be wrapped by Inspect AI, METR tasks, or
