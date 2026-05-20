@@ -38,3 +38,8 @@ Latent or trial-level trajectories are scored by:
 - discrete curvature shift
 
 These scores are meant to capture neuroplastic movement as a path through
+latent state space, not just a before/after delta.
+
+## Decoder drift
+
+Decoder output stability is measured with MSE, cosine error, output gain ratio,
