@@ -18,3 +18,8 @@ from neurodrift.numerics import (
 Array = NDArray[np.float64]
 
 
+@dataclass(frozen=True)
+class CovarianceDrift:
+    """Summary of SPD covariance movement between two sessions."""
+
+    source_covariance: Array
