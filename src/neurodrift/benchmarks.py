@@ -23,3 +23,8 @@ ALIGNER_REGISTRY = {
 
 
 @dataclass(frozen=True)
+class AlignmentBenchmarkRow:
+    """One scored adaptation strategy."""
+
+    name: str
+    result: DriftEvaluationResult
