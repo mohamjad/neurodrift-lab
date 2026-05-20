@@ -8,3 +8,8 @@ from neurodrift.numerics import safe_covariance
 
 def test_affine_invariant_distance_is_zero_for_same_matrix() -> None:
     samples = np.random.default_rng(1).normal(size=(64, 5))
+    cov = safe_covariance(samples)
+
+    assert affine_invariant_distance(cov, cov) < 1e-9
+
+
