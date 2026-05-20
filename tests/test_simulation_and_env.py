@@ -18,3 +18,8 @@ def test_simulated_pair_has_expected_shapes() -> None:
 def test_env_returns_machine_readable_scores() -> None:
     pair = simulate_session_pair(SimulationConfig(seed=8, trials=48, time_steps=18, channels=9))
     result = IntentDriftEnv(pair).evaluate(WhiteningColoringAligner())
+    payload = result.to_dict()
+
+    assert 0.0 <= result.report.stability_score <= 1.0
+    assert "alignment_gain" in payload
+    assert "affine_invariant" in payload["report"]["covariance"]
