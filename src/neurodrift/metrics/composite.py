@@ -68,3 +68,4 @@ def build_drift_report(
         subspace_distance=subspace,
         procrustes_error=procrustes,
         stability_score=float(stability_score),
+    )
