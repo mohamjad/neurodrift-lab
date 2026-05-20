@@ -58,3 +58,8 @@ def build_drift_report(
         + trajectory.mean_position_shift
         + decoder_penalty
     )
+    stability_score = 1.0 / (1.0 + raw_penalty)
+    return DriftReport(
+        source_session=pair.source.session_id,
+        target_session=pair.target.session_id,
+        covariance=covariance,
