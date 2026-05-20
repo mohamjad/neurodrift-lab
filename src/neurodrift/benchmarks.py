@@ -83,3 +83,8 @@ def run_alignment_benchmark(
     unknown = sorted(set(names) - set(ALIGNER_REGISTRY))
     if unknown:
         raise ValueError(f"unknown aligners: {', '.join(unknown)}")
+    rows = []
+    for name in names:
+        aligner = ALIGNER_REGISTRY[name]()
+        result = IntentDriftEnv(pair).evaluate(aligner)
+        rows.append(AlignmentBenchmarkRow(name=name, result=result))
