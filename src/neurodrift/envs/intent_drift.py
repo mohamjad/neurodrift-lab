@@ -58,3 +58,8 @@ class IntentDriftEnv:
         aligned_target_pred = self.decoder.predict(aligned_target_x)
 
         source_mse = self.decoder.score_mse(source_x, source_y)
+        target_mse_raw = self.decoder.score_mse(target_x, target_y)
+        target_mse_aligned = float(((aligned_target_pred - target_y) ** 2).mean())
+        alignment_gain = (target_mse_raw - target_mse_aligned) / max(target_mse_raw, 1e-8)
+
+        report = build_drift_report(
