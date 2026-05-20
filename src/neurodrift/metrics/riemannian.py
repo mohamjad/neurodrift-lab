@@ -53,3 +53,8 @@ def covariance_drift(
     target_samples: Array,
     epsilon: float = 1e-6,
 ) -> CovarianceDrift:
+    """Estimate and compare covariance geometry from two observation matrices."""
+
+    source_cov = safe_covariance(source_samples, epsilon)
+    target_cov = safe_covariance(target_samples, epsilon)
+    source_trace = float(np.trace(source_cov))
