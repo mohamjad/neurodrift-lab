@@ -98,3 +98,8 @@ def build_parser() -> argparse.ArgumentParser:
     nlb = subparsers.add_parser("convert-nlb", help="convert an NLB HDF5 group to NPZ")
     nlb.add_argument("--input", type=Path, required=True)
     nlb.add_argument("--dataset", default="mc_maze_small_20")
+    nlb.add_argument("--max-trials", type=int, default=80)
+    nlb.add_argument("--output", type=Path, default=Path("data/fixtures/nlb_pair.npz"))
+    nlb.set_defaults(func=run_convert_nlb)
+    return parser
+
