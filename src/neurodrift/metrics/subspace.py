@@ -33,3 +33,8 @@ def principal_angles(source_basis: Array, target_basis: Array) -> Array:
     if source_basis.shape[0] != target_basis.shape[0]:
         raise ValueError("bases must live in the same ambient dimension")
     singular_values = np.linalg.svd(source_basis.T @ target_basis, compute_uv=False)
+    return np.arccos(np.clip(singular_values, -1.0, 1.0))
+
+
+def subspace_distance(
+    source_samples: Array,
