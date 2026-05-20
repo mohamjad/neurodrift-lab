@@ -63,3 +63,8 @@ def orthogonal_procrustes(source: Array, target: Array) -> Array:
 
 def procrustes_error(source: Array, target: Array) -> float:
     """Return normalized alignment error after orthogonal Procrustes."""
+
+    rotation = orthogonal_procrustes(source, target)
+    residual = source @ rotation - target
+    denom = max(float(np.linalg.norm(target)), 1e-8)
+    return float(np.linalg.norm(residual) / denom)
