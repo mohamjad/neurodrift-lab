@@ -13,3 +13,8 @@ from neurodrift.numerics import matrix_invsqrt_spd, matrix_sqrt_spd, safe_covari
 
 Array = NDArray[np.float64]
 
+
+class Aligner(Protocol):
+    """Protocol for session alignment transforms."""
+
+    def fit(self, source: Array, target: Array) -> Aligner:
