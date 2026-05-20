@@ -13,3 +13,8 @@ def as_float_array(value: Array) -> Array:
 
     return np.asarray(value, dtype=np.float64)
 
+
+def symmetrize(matrix: Array) -> Array:
+    """Project a square matrix onto the symmetric matrices."""
+
+    matrix = as_float_array(matrix)
