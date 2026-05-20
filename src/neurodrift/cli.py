@@ -43,3 +43,8 @@ def run_simulation(args: argparse.Namespace) -> int:
 
 
 def run_benchmark(args: argparse.Namespace) -> int:
+    pair = _load_pair(args)
+    benchmark = run_alignment_benchmark(pair)
+    _emit(benchmark.to_dict(), args.output)
+    return 0
+
