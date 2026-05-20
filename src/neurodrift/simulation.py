@@ -13,3 +13,8 @@ Array = NDArray[np.float64]
 
 
 @dataclass(frozen=True)
+class SimulationConfig:
+    """Parameters for a paired source/target BCI simulation."""
+
+    seed: int = 7
+    trials: int = 96
