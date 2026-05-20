@@ -38,3 +38,8 @@ class RidgeDecoder:
         self.bias_ = y_mean - x_mean @ self.weights_
         return self
 
+    def predict(self, features: Array) -> Array:
+        """Predict intent from features."""
+
+        if self.weights_ is None or self.bias_ is None:
+            raise RuntimeError("decoder must be fit before predict")
