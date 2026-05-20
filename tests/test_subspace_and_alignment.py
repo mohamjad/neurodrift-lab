@@ -13,3 +13,8 @@ def test_subspace_distance_is_near_zero_for_rotated_basis() -> None:
     rotated = samples @ q
 
     assert subspace_distance(samples, rotated, rank=6) < 1e-7
+
+
+def test_procrustes_alignment_reduces_paired_trial_error() -> None:
+    rng = np.random.default_rng(4)
+    source = rng.normal(size=(80, 8))
