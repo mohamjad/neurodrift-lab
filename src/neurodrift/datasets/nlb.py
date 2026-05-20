@@ -63,3 +63,8 @@ def load_nlb_h5_pair(
     intent = intent[:trial_count]
     intent_scale = np.maximum(intent.std(axis=0, keepdims=True), 1e-8)
     intent = (intent - intent.mean(axis=0, keepdims=True)) / intent_scale
+    source_idx = np.arange(0, trial_count, 2)
+    target_idx = np.arange(1, trial_count, 2)
+    paired_count = min(source_idx.size, target_idx.size)
+    source_idx = source_idx[:paired_count]
+    target_idx = target_idx[:paired_count]
