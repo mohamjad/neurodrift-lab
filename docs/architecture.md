@@ -18,3 +18,8 @@ sessions that share channel and intent dimensions.
 - `metrics.composite`: machine-readable summary for eval runners.
 
 ## Model stack
+
+- `RidgeDecoder`: deterministic baseline decoder.
+- `IdentityAligner`: no-op baseline.
+- `CenteringTransform`: corrects mean shifts.
+- `ProcrustesAligner`: paired orthogonal alignment.
