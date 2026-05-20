@@ -68,3 +68,8 @@ configs/         Example experiment configs
 ```
 
 ## Design principles
+
+- Prefer small typed modules over notebook-only logic.
+- Keep mathematical assumptions explicit.
+- Treat simulated data as a test harness, not a replacement for invasive data.
+- Make every metric reproducible and inspectable.
