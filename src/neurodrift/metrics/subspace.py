@@ -23,3 +23,8 @@ def orthonormal_basis(samples: Array, rank: int | None = None) -> Array:
     return vh[:rank].T
 
 
+def principal_angles(source_basis: Array, target_basis: Array) -> Array:
+    """Return principal angles in radians between two column-orthonormal bases."""
+
+    source_basis = np.asarray(source_basis, dtype=np.float64)
+    target_basis = np.asarray(target_basis, dtype=np.float64)
