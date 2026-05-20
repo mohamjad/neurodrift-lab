@@ -28,3 +28,8 @@ class DriftReport:
     def to_dict(self) -> dict[str, Any]:
         """Serialize scalar report values for logs, JSON, and eval scorers."""
 
+        payload = asdict(self)
+        payload["covariance"].pop("source_covariance", None)
+        payload["covariance"].pop("target_covariance", None)
+        return payload
+
