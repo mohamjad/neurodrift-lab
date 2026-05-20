@@ -68,3 +68,8 @@ class IntentDriftEnv:
             target_decoder_outputs=aligned_target_pred,
         )
         _ = decoder_drift(raw_target_pred, aligned_target_pred)
+        return DriftEvaluationResult(
+            source_mse=source_mse,
+            target_mse_raw=target_mse_raw,
+            target_mse_aligned=target_mse_aligned,
+            alignment_gain=float(alignment_gain),
