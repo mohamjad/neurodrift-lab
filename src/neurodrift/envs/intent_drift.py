@@ -48,3 +48,8 @@ class IntentDriftEnv:
         target_x = self.pair.target.trial_features
         source_y = self.pair.source.intent
         target_y = self.pair.target.intent
+
+        self.decoder.fit(source_x, source_y)
+        source_pred = self.decoder.predict(source_x)
+        raw_target_pred = self.decoder.predict(target_x)
+
