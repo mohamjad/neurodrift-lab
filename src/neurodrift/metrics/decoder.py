@@ -18,3 +18,8 @@ class DecoderDrift:
     cosine_error: float
     gain_ratio: float
     bias_shift: float
+
+
+def decoder_drift(source_outputs: Array, target_outputs: Array) -> DecoderDrift:
+    """Compare paired decoder outputs from source and target sessions."""
+
