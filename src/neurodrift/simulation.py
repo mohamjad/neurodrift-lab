@@ -38,3 +38,8 @@ def _smooth_intents(rng: np.random.Generator, trials: int, intent_dims: int) -> 
     kernel = np.array([0.15, 0.25, 0.2, 0.25, 0.15])
     padded = np.pad(raw, ((2, 2), (0, 0)), mode="edge")
     smoothed = np.vstack(
+        [(padded[idx : idx + kernel.size] * kernel[:, None]).sum(axis=0) for idx in range(trials)]
+    )
+    scale = np.maximum(smoothed.std(axis=0, keepdims=True), 1e-8)
+    return (smoothed - smoothed.mean(axis=0, keepdims=True)) / scale
+
