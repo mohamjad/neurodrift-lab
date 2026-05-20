@@ -48,3 +48,8 @@ neurodrift benchmark --input data\fixtures\milimbeeg_s1.npz
 ```
 
 Run a neural-population smoke benchmark from the included NLB fixture:
+
+```powershell
+neurodrift benchmark --input data\fixtures\nlb_mc_maze_small_20.npz
+```
+
