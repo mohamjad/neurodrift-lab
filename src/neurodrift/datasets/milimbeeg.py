@@ -28,3 +28,8 @@ def _trial_url(subject: str, mode: str, task: int, repeat: int, run: int = 1) ->
 
 
 def fetch_milimbeeg_sample(
+    dest: Path,
+    *,
+    subject: str = "S1",
+    tasks: tuple[int, ...] = DEFAULT_TASKS,
+    repeats: tuple[int, ...] = DEFAULT_REPEATS,
