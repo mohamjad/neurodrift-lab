@@ -88,3 +88,4 @@ def run_alignment_benchmark(
         aligner = ALIGNER_REGISTRY[name]()
         result = IntentDriftEnv(pair).evaluate(aligner)
         rows.append(AlignmentBenchmarkRow(name=name, result=result))
+    return AlignmentBenchmark(tuple(rows))
