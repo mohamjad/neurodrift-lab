@@ -68,3 +68,8 @@ def run_convert_nlb(args: argparse.Namespace) -> int:
     )
     return 0
 
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="neurodrift")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
