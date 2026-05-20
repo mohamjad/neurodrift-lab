@@ -18,3 +18,8 @@ notebook. It includes:
 
 Most BCI repos focus on decoding performance within a session. This repo treats
 longitudinal drift as the first-class object:
+
+- How far did the neural manifold move?
+- Did decoder outputs preserve intent after the move?
+- Which alignment strategy best stabilizes the interface?
+- Can we score an adaptive decoder as an environment, not just a static model?
