@@ -48,3 +48,8 @@ The loader treats imagery trials as the source session and motor execution
 trials as the target session. This is not invasive BCI, but it is a useful real
 multi-session EEG smoke test for the same drift pipeline.
 
+## NLB neural-population conversion
+
+If you have the Neural Latents Benchmark HDF5 evaluation file locally:
+
+```powershell
