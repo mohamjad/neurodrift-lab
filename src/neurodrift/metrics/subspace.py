@@ -13,3 +13,8 @@ def orthonormal_basis(samples: Array, rank: int | None = None) -> Array:
 
     samples = np.asarray(samples, dtype=np.float64)
     if samples.ndim != 2:
+        raise ValueError("samples must be shaped (observations, features)")
+    centered = samples - samples.mean(axis=0, keepdims=True)
+    _, _, vh = np.linalg.svd(centered, full_matrices=False)
+    if rank is None:
+        rank = min(samples.shape)
