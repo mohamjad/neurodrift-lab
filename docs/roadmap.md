@@ -28,3 +28,6 @@
 Only split once APIs stabilize:
 
 - `neural-drift-metrics`: standalone metrics library.
+- `bci-intent-drift-gym`: benchmark environments.
+- `intent-drift-experiments`: paper artifacts.
+- `bci-drift-dashboard`: visualization app.
