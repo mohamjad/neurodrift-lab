@@ -18,3 +18,8 @@
 
 ## Phase 3: Research workflows
 
+- Public dataset loaders where licensing allows.
+- Drift dashboard.
+- Reproducible paper-style experiment configs.
+- Benchmark cards for adaptive decoders.
+
