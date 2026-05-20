@@ -53,3 +53,8 @@ class CenteringTransform:
         if self.source_mean_ is None or self.target_mean_ is None:
             raise RuntimeError("aligner must be fit before transform")
         return np.asarray(target, dtype=np.float64) - self.target_mean_ + self.source_mean_
+
+
+@dataclass
+class ProcrustesAligner:
+    """Orthogonal alignment based on paired trial features."""
