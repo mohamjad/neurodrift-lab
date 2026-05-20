@@ -13,3 +13,8 @@ from neurodrift.datasets.nlb import load_nlb_h5_pair
 from neurodrift.envs.intent_drift import IntentDriftEnv
 from neurodrift.io import load_session_pair_npz, save_json, save_session_pair_npz
 from neurodrift.simulation import SimulationConfig, simulate_session_pair
+
+
+def _load_config(path: Path | None) -> SimulationConfig:
+    if path is None:
+        return SimulationConfig()
