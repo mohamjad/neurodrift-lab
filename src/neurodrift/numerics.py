@@ -73,3 +73,8 @@ def safe_covariance(samples: Array, epsilon: float = 1e-6) -> Array:
         cov = np.array([[float(cov)]])
     return regularize_spd(cov, epsilon)
 
+
+def zscore(samples: Array, epsilon: float = 1e-8) -> Array:
+    """Column-wise standardization."""
+
+    samples = as_float_array(samples)
