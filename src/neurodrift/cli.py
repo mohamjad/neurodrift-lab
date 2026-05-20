@@ -28,3 +28,8 @@ def _load_pair(args: argparse.Namespace):
     return simulate_session_pair(_load_config(args.config))
 
 
+def _emit(payload: dict[str, Any], output: Path | None) -> None:
+    if output is not None:
+        save_json(payload, output)
+    print(json.dumps(payload, indent=2))
+
