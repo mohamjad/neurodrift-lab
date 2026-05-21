@@ -1,81 +1,76 @@
 # NeuroDrift Lab
 
-NeuroDrift Lab is a research-grade monorepo for measuring session-to-session
-intent drift, neural manifold movement, and decoder stability in BCI-style
-systems.
+Tools for measuring BCI intent drift across sessions.
 
-The project is deliberately built as a composable lab rather than a one-off
-notebook. It includes:
+The core question:
 
-- Riemannian metrics for covariance and latent-state drift.
-- Session simulation for controlled neuroplasticity and intent-drift studies.
-- Decoder and alignment baselines.
-- A small evaluation environment API that can later be wrapped by Inspect AI,
-  METR task-standard tasks, NeMo Gym, or Gymnasium.
-- Tests and examples intended to keep the code readable and auditable.
-
-## Why this exists
-
-Most BCI repos focus on decoding performance within a session. This repo treats
-longitudinal drift as the first-class object:
-
-- How far did the neural manifold move?
-- Did decoder outputs preserve intent after the move?
-- Which alignment strategy best stabilizes the interface?
-- Can we score an adaptive decoder as an environment, not just a static model?
-
-## Status
-
-This is an early but working foundation. It does not vendor upstream projects.
-Instead, it exposes clean adapters and documents how to integrate established
-tools such as pyRiemann, Geomstats, LFADS, NoMAD-style latent alignment,
-BRAND, and BCI simulators.
-
-## Quickstart
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -e .[dev]
-pytest
-python examples\simulate_drift_report.py
+```text
+when the neural manifold moves, does decoded intent still mean the same thing?
 ```
 
-Run a real-data smoke benchmark from the included MILimbEEG/OpenBCI fixture:
+This repo gives you:
+
+- SPD/Riemannian covariance drift
+- subspace and Procrustes drift
+- latent trajectory drift
+- decoder-output drift
+- alignment baselines
+- a small eval environment
+- simulated sessions
+- real-data fixtures from MILimbEEG/OpenBCI and NLB
+
+No giant notebook. No fake benchmark wrapper. Just typed code, tests, fixtures,
+and commands that run.
+
+## Run
+
+```powershell
+pip install -e .[dev,integrations]
+pytest
+ruff check .
+```
+
+Synthetic benchmark:
+
+```powershell
+neurodrift benchmark --config configs\simulated_medium_drift.json
+```
+
+Real EEG fixture:
 
 ```powershell
 neurodrift benchmark --input data\fixtures\milimbeeg_s1.npz
 ```
 
-Run a neural-population smoke benchmark from the included NLB fixture:
+Real neural-population fixture:
 
 ```powershell
 neurodrift benchmark --input data\fixtures\nlb_mc_maze_small_20.npz
 ```
 
-## Repository layout
+## Shape
 
 ```text
 src/neurodrift/
-  metrics/       Riemannian, subspace, trajectory, and decoder drift metrics
-  models/        Decoders and alignment baselines
-  envs/          BCI session environment abstractions
-  adapters/      Optional bridges to frontier-eval and BCI ecosystems
-tests/           Unit tests for numerical behavior and env flows
-examples/        Runnable experiments
-docs/            Design notes, roadmap, and upstream integration map
-configs/         Example experiment configs
+  metrics/    drift measures
+  models/     decoders and aligners
+  envs/       eval loop
+  datasets/   real-data loaders
+  adapters/   optional external bridges
+tests/        numerical and flow tests
+examples/     runnable reports
+docs/         details when needed
 ```
 
-## Design principles
+## Useful Commands
 
-- Prefer small typed modules over notebook-only logic.
-- Keep mathematical assumptions explicit.
-- Treat simulated data as a test harness, not a replacement for invasive data.
-- Make every metric reproducible and inspectable.
-- Build extension points before building dashboards or papers.
+```powershell
+neurodrift simulate --aligner procrustes
+neurodrift benchmark --config configs\simulated_high_drift.json
+neurodrift fetch-milimbeeg --subject S1
+neurodrift convert-nlb --input path\to\eval_data_test.h5
+```
 
 ## License
 
-MIT. Upstream integrations remain external dependencies and retain their own
-licenses.
+MIT.
