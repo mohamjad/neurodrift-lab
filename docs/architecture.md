@@ -1,13 +1,14 @@
 # Architecture
 
-NeuroDrift Lab is organized around one invariant: longitudinal BCI work should
-make drift measurable before adaptation is judged useful.
+The repo is built around one rule: measure drift before calling adaptation
+useful.
 
 ## Data model
 
-`SessionBatch` stores neural activity as `(trials, time, channels)` and intent
-labels as `(trials, intent_dims)`. `SessionPair` couples source and target
-sessions that share channel and intent dimensions.
+`SessionBatch` is `(trials, time, channels)` neural data plus `(trials,
+intent_dims)` labels.
+
+`SessionPair` is the source-target unit every metric consumes.
 
 ## Metric stack
 
@@ -27,15 +28,12 @@ sessions that share channel and intent dimensions.
 
 ## Environment stack
 
-`IntentDriftEnv` fits a source decoder, applies an alignment strategy to target
-features, and reports whether target intent preservation improved. It is small
-on purpose: larger eval runners should wrap this API rather than control core
-math directly.
+`IntentDriftEnv` fits on source, aligns target, scores target intent
+preservation, and emits a report. External eval systems can wrap that.
 
 ## Simulation
 
-The simulator creates paired source and target sessions from shared latent
-intent dynamics. Target sessions receive controlled projection rotation,
-feature-gain drift, noise, and small intent perturbations. This makes tests and
-example reports reproducible while preserving the distinction between toy data
-and invasive recordings.
+The simulator creates paired sessions from shared latent intent dynamics, then
+adds rotation, gain shift, noise, and small intent perturbations.
+
+It is a test harness. Real data comes through dataset loaders.
