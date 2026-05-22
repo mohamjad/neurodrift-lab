@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from neurodrift.evidence import EvidenceSummary
+from neurodrift.experiments.meaning_preservation import MeaningPreservationReport
 
 
 def write_evidence_figures(summary: EvidenceSummary, output_dir: Path) -> tuple[Path, ...]:
@@ -18,6 +19,59 @@ def write_evidence_figures(summary: EvidenceSummary, output_dir: Path) -> tuple[
     paths[0].write_text(render_split_rate(summary), encoding="utf-8")
     paths[1].write_text(render_mse_vs_meaning(summary), encoding="utf-8")
     return paths
+
+
+def write_thesis_figure(report: MeaningPreservationReport, path: Path) -> Path:
+    """Write the single-result thesis figure."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(render_thesis_split(report), encoding="utf-8")
+    return path
+
+
+def render_thesis_split(report: MeaningPreservationReport) -> str:
+    """Render the split where decoder error improves and meaning degrades."""
+
+    row = report.best_by_mse
+    width = 820
+    height = 380
+    left = 70
+    top = 82
+    group_width = 285
+    bar_width = 58
+    max_mse = max(row.target_mse_raw, row.target_mse_aligned, 1e-8)
+    max_meaning = max(row.raw_meaning_distance, row.aligned_meaning_distance, 1e-8)
+
+    def bar(x: int, value: float, maximum: float, color: str) -> str:
+        height_px = int(210 * (value / maximum))
+        y = top + 210 - height_px
+        return (
+            f'<rect x="{x}" y="{y}" width="{bar_width}" height="{height_px}" fill="{color}" />'
+            f'<text x="{x - 4}" y="{y - 10}" class="value">{value:.3f}</text>'
+        )
+
+    mse_x = left + 90
+    meaning_x = left + group_width + 125
+    body = "\n".join(
+        [
+            f'<text x="{left}" y="58" class="subtitle">method: {row.name}</text>',
+            f'<line x1="{left}" y1="{top + 210}" x2="{width - 70}" y2="{top + 210}" '
+            'stroke="#6d6d6d" />',
+            bar(mse_x, row.target_mse_raw, max_mse, "#9a9a9a"),
+            bar(mse_x + 78, row.target_mse_aligned, max_mse, "#f0f0f0"),
+            bar(meaning_x, row.raw_meaning_distance, max_meaning, "#9a9a9a"),
+            bar(meaning_x + 78, row.aligned_meaning_distance, max_meaning, "#f0f0f0"),
+            f'<text x="{mse_x - 20}" y="{top + 250}" class="label">decoder MSE</text>',
+            f'<text x="{meaning_x - 34}" y="{top + 250}" class="label">meaning distance</text>',
+            f'<text x="{mse_x - 4}" y="{top + 278}" class="tick">raw</text>',
+            f'<text x="{mse_x + 66}" y="{top + 278}" class="tick">aligned</text>',
+            f'<text x="{meaning_x - 4}" y="{top + 278}" class="tick">raw</text>',
+            f'<text x="{meaning_x + 66}" y="{top + 278}" class="tick">aligned</text>',
+            f'<text x="{left}" y="{height - 34}" class="subtitle">'
+            f'MSE gain {row.alignment_gain:.2f}; meaning gain {row.meaning_gain:.2f}</text>',
+        ]
+    )
+    return _svg_shell(width, height, "decoder improves; meaning breaks", body)
 
 
 def render_split_rate(summary: EvidenceSummary) -> str:
@@ -112,6 +166,7 @@ def _svg_shell(width: int, height: int, title: str, body: str) -> str:
   <style>
     text {{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #e8e8e8; }}
     .title {{ font-size: 22px; font-weight: 600; }}
+    .subtitle {{ font-size: 14px; fill: #cfcfcf; }}
     .label {{ font-size: 15px; }}
     .value {{ font-size: 15px; fill: #f2f2f2; }}
     .axis {{ font-size: 13px; fill: #c9c9c9; }}

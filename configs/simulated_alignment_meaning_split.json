@@ -1,11 +1,11 @@
 {
-  "seed": 1,
+  "seed": 40,
   "trials": 96,
   "time_steps": 40,
   "channels": 16,
   "intent_dims": 2,
   "latent_dims": 6,
-  "drift_strength": 0.2,
-  "noise_scale": 0.05,
+  "drift_strength": 0.7,
+  "noise_scale": 0.06,
   "sample_rate_hz": 100.0
 }

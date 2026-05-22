@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from neurodrift.evidence import run_evidence_suite, synthetic_evidence_cases
-from neurodrift.figures import render_mse_vs_meaning, render_split_rate
+from neurodrift.figures import render_mse_vs_meaning, render_split_rate, render_thesis_split
 
 
 def test_synthetic_evidence_cases_are_named_and_bounded() -> None:
@@ -22,6 +22,8 @@ def test_evidence_suite_summarizes_repeated_runs() -> None:
 
 def test_evidence_figures_render_svg() -> None:
     summary = run_evidence_suite(suite="synthetic", seed_count=1)
+    report = summary.runs[0].report
 
     assert render_split_rate(summary).startswith("<svg")
     assert "circle" in render_mse_vs_meaning(summary)
+    assert "decoder improves" in render_thesis_split(report)

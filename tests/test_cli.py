@@ -25,6 +25,7 @@ def test_cli_thesis_runs(capsys) -> None:
 
     assert exit_code == 0
     assert "best_by_meaning" in captured.out
+    assert "meaning-split.svg" in captured.out
 
 
 def test_cli_evidence_runs(capsys) -> None:

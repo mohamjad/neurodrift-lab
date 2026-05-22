@@ -13,7 +13,7 @@ from neurodrift.datasets.nlb import load_nlb_h5_pair
 from neurodrift.envs.intent_drift import IntentDriftEnv
 from neurodrift.evidence import run_evidence_suite
 from neurodrift.experiments.meaning_preservation import run_meaning_preservation_experiment
-from neurodrift.figures import write_evidence_figures
+from neurodrift.figures import write_evidence_figures, write_thesis_figure
 from neurodrift.io import load_session_pair_npz, save_json, save_session_pair_npz
 from neurodrift.simulation import SimulationConfig, simulate_session_pair
 
@@ -55,7 +55,11 @@ def run_benchmark(args: argparse.Namespace) -> int:
 def run_thesis(args: argparse.Namespace) -> int:
     pair = _load_pair(args)
     report = run_meaning_preservation_experiment(pair, temperature=args.temperature)
-    _emit(report.to_dict(), args.output)
+    payload = report.to_dict()
+    if not args.no_figure:
+        figure_path = write_thesis_figure(report, args.figure)
+        payload["figure"] = str(figure_path)
+    _emit(payload, args.output)
     return 0
 
 
@@ -119,6 +123,8 @@ def build_parser() -> argparse.ArgumentParser:
     thesis.add_argument("--input", type=Path, default=None, help="load a session pair NPZ")
     thesis.add_argument("--output", type=Path, default=None, help="write JSON report")
     thesis.add_argument("--temperature", type=float, default=0.75)
+    thesis.add_argument("--figure", type=Path, default=Path("artifacts/thesis/meaning-split.svg"))
+    thesis.add_argument("--no-figure", action="store_true", help="skip SVG figure output")
     thesis.set_defaults(func=run_thesis)
 
     evidence = subparsers.add_parser(
