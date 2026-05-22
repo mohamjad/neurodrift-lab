@@ -16,7 +16,7 @@ This builds on work the field already respects:
 - adaptive decoding under neural non-stationarity
 - covariate-shift adaptation
 - uncertainty-aware neural decoding
-- neural latent benchmarks and public NWB/DANDI datasets
+- neural latent benchmarks and public NWB/DANDI datasets as next evidence targets
 
 The distinction is the measured object. NeuroDrift does not ask only whether an
 alignment method improves control. It asks whether the target session's weak

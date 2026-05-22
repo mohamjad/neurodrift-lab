@@ -9,7 +9,7 @@ from neurodrift.simulation import SimulationConfig, simulate_session_pair
 
 
 def main() -> None:
-    pair = simulate_session_pair(SimulationConfig(seed=17, drift_strength=0.42, noise_scale=0.06))
+    pair = simulate_session_pair(SimulationConfig(seed=40, drift_strength=0.7, noise_scale=0.06))
     report = run_meaning_preservation_experiment(pair)
     print(json.dumps(report.to_dict(), indent=2))
 
