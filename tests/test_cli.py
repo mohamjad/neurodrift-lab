@@ -17,3 +17,11 @@ def test_cli_benchmark_runs(capsys) -> None:
 
     assert exit_code == 0
     assert "best_by_target_mse" in captured.out
+
+
+def test_cli_thesis_runs(capsys) -> None:
+    exit_code = main(["thesis"])
+    captured = capsys.readouterr()
+
+    assert exit_code == 0
+    assert "best_by_meaning" in captured.out

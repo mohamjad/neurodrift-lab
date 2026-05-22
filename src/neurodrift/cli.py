@@ -11,6 +11,7 @@ from neurodrift.benchmarks import ALIGNER_REGISTRY, run_alignment_benchmark
 from neurodrift.datasets.milimbeeg import fetch_milimbeeg_sample, load_milimbeeg_pair
 from neurodrift.datasets.nlb import load_nlb_h5_pair
 from neurodrift.envs.intent_drift import IntentDriftEnv
+from neurodrift.experiments.meaning_preservation import run_meaning_preservation_experiment
 from neurodrift.io import load_session_pair_npz, save_json, save_session_pair_npz
 from neurodrift.simulation import SimulationConfig, simulate_session_pair
 
@@ -46,6 +47,13 @@ def run_benchmark(args: argparse.Namespace) -> int:
     pair = _load_pair(args)
     benchmark = run_alignment_benchmark(pair)
     _emit(benchmark.to_dict(), args.output)
+    return 0
+
+
+def run_thesis(args: argparse.Namespace) -> int:
+    pair = _load_pair(args)
+    report = run_meaning_preservation_experiment(pair, temperature=args.temperature)
+    _emit(report.to_dict(), args.output)
     return 0
 
 
@@ -85,6 +93,16 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark.add_argument("--input", type=Path, default=None, help="load a session pair NPZ")
     benchmark.add_argument("--output", type=Path, default=None, help="write JSON report")
     benchmark.set_defaults(func=run_benchmark)
+
+    thesis = subparsers.add_parser(
+        "thesis",
+        help="test whether alignment preserves target-session intent semantics",
+    )
+    thesis.add_argument("--config", type=Path, default=None)
+    thesis.add_argument("--input", type=Path, default=None, help="load a session pair NPZ")
+    thesis.add_argument("--output", type=Path, default=None, help="write JSON report")
+    thesis.add_argument("--temperature", type=float, default=0.75)
+    thesis.set_defaults(func=run_thesis)
 
     milimbeeg = subparsers.add_parser(
         "fetch-milimbeeg",
