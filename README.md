@@ -1,12 +1,23 @@
 # NeuroDrift Lab
 
-Tools for measuring BCI intent drift across sessions.
+BCI evaluation usually asks whether a decoder still performs.
+
+That is too weak.
+
+When the neural manifold moves, a decoder can look better after alignment while
+the measured intent becomes less faithful to the target session. NeuroDrift
+treats that as the central failure mode: plasticity-driven covariate shift where
+control metrics and intent preservation diverge.
 
 The core question:
 
 ```text
 when the neural manifold moves, does decoded intent still mean the same thing?
 ```
+
+The repo is a reference implementation for that question. It scores decoder
+error, neural geometry, weak-intent ambiguity, intent drift, and meaning
+preservation as separate axes.
 
 This repo gives you:
 
@@ -62,6 +73,17 @@ Thesis experiment:
 ```powershell
 neurodrift thesis --config configs\simulated_alignment_meaning_split.json
 ```
+
+Default thesis result:
+
+```text
+best_by_mse: procrustes
+best_by_meaning: identity
+has_alignment_meaning_split: true
+```
+
+`procrustes` improves target MSE while making weak-intent meaning worse. The
+command writes `artifacts/thesis/meaning-split.svg`.
 
 Evidence suite:
 

@@ -35,6 +35,7 @@ neurodrift thesis --config configs\simulated_alignment_meaning_split.json
 
 This is the research-facing experiment. It asks whether each alignment method
 preserves target-session meaning, not only whether it lowers decoder MSE.
+It writes `artifacts/thesis/meaning-split.svg` by default.
 
 Read:
 
