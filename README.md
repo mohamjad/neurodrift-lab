@@ -17,6 +17,7 @@ This repo gives you:
 - plasticity / meaning-gap reporting
 - decoder-output drift
 - alignment baselines
+- meaning-preservation experiments
 - a small eval environment
 - simulated sessions
 - real-data fixtures from MILimbEEG/OpenBCI and NLB
@@ -56,6 +57,12 @@ Meaning-gap report:
 python examples\plasticity_signal_report.py
 ```
 
+Thesis experiment:
+
+```powershell
+neurodrift thesis --config configs\simulated_alignment_meaning_split.json
+```
+
 ## Shape
 
 ```text
@@ -63,6 +70,7 @@ src/neurodrift/
   metrics/    drift measures
   intent.py   probabilistic weak intent labels
   plasticity.py meaning-gap signal
+  experiments/ paper-facing thesis checks
   models/     decoders and aligners
   envs/       eval loop
   datasets/   real-data loaders
@@ -77,6 +85,7 @@ docs/         details when needed
 ```powershell
 neurodrift simulate --aligner procrustes
 neurodrift benchmark --config configs\simulated_high_drift.json
+neurodrift thesis --input data\fixtures\nlb_mc_maze_small_20.npz
 neurodrift fetch-milimbeeg --subject S1
 neurodrift convert-nlb --input path\to\eval_data_test.h5
 ```

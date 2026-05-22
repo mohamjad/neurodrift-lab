@@ -27,6 +27,26 @@ Runs all registered aligners on the same pair.
 Simulator presets are for machinery checks. Real sessions should come through
 loaders.
 
+## Thesis experiment
+
+```powershell
+neurodrift thesis --config configs\simulated_alignment_meaning_split.json
+```
+
+This is the research-facing experiment. It asks whether each alignment method
+preserves target-session meaning, not only whether it lowers decoder MSE.
+
+Read:
+
+- `best_by_mse`: method with the lowest aligned target error.
+- `best_by_meaning`: method with the lowest weak-intent semantic distance.
+- `has_alignment_meaning_split`: true when those two objectives diverge.
+- `hard_label_loss`: how much ambiguity disappears under hard labels.
+
+If `alignment_gain` is positive and `meaning_gain` is negative, the method
+over-aligned: it made the source decoder look better while moving away from the
+target session's weak intent.
+
 ## Real-data smoke test
 
 Included EEG fixture:
