@@ -43,7 +43,8 @@ def main() -> int:
         and exists("docs/data-fixtures.md")
         and exists("docs/world2-alignment.md")
         and exists("docs/research-spec.md")
-        and exists("docs/evidence-protocol.md"),
+        and exists("docs/evidence-protocol.md")
+        and exists("docs/memo.md"),
         "tests_are_not_token": count_files("tests", "test_*.py") >= 8,
         "readme_states_thesis": all(
             term in read("README.md").lower()
@@ -51,6 +52,10 @@ def main() -> int:
         ),
         "readme_states_thesis_command": "neurodrift thesis" in read("README.md").lower(),
         "readme_states_evidence_command": "neurodrift evidence" in read("README.md").lower(),
+        "readme_states_hard_claim": all(
+            term in read("README.md").lower()
+            for term in ("decoder", "intent preservation", "diverge")
+        ),
     }
     scanned = "\n".join(
         path.read_text(encoding="utf-8", errors="ignore")
