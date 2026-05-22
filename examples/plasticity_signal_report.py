@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import json
 
+import numpy as np
+
 from neurodrift.intent import IntentDistribution
 from neurodrift.metrics.composite import build_drift_report
 from neurodrift.plasticity import build_plasticity_signal
 from neurodrift.simulation import SimulationConfig, simulate_session_pair
-
-import numpy as np
 
 
 def main() -> None:
