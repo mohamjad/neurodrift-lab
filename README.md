@@ -10,9 +10,11 @@ when the neural manifold moves, does decoded intent still mean the same thing?
 
 This repo gives you:
 
+- weak intent supervision
 - SPD/Riemannian covariance drift
 - subspace and Procrustes drift
 - latent trajectory drift
+- plasticity / meaning-gap reporting
 - decoder-output drift
 - alignment baselines
 - a small eval environment
@@ -48,11 +50,19 @@ Real neural-population fixture:
 neurodrift benchmark --input data\fixtures\nlb_mc_maze_small_20.npz
 ```
 
+Meaning-gap report:
+
+```powershell
+python examples\plasticity_signal_report.py
+```
+
 ## Shape
 
 ```text
 src/neurodrift/
   metrics/    drift measures
+  intent.py   probabilistic weak intent labels
+  plasticity.py meaning-gap signal
   models/     decoders and aligners
   envs/       eval loop
   datasets/   real-data loaders
