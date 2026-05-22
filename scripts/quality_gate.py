@@ -31,6 +31,9 @@ def main() -> int:
         "meaning_preservation_experiment": exists(
             "src/neurodrift/experiments/meaning_preservation.py"
         ),
+        "evidence_suite": exists("src/neurodrift/evidence.py")
+        and exists("src/neurodrift/stats.py")
+        and exists("src/neurodrift/figures.py"),
         "eval_environment": exists("src/neurodrift/envs/intent_drift.py"),
         "real_eeg_fixture": exists("data/fixtures/milimbeeg_s1.npz"),
         "real_neural_fixture": exists("data/fixtures/nlb_mc_maze_small_20.npz"),
@@ -39,13 +42,15 @@ def main() -> int:
         "docs_cover_methods": exists("docs/metrics.md")
         and exists("docs/data-fixtures.md")
         and exists("docs/world2-alignment.md")
-        and exists("docs/research-spec.md"),
+        and exists("docs/research-spec.md")
+        and exists("docs/evidence-protocol.md"),
         "tests_are_not_token": count_files("tests", "test_*.py") >= 8,
         "readme_states_thesis": all(
             term in read("README.md").lower()
             for term in ("intent drift", "riemannian", "weak intent", "meaning-gap")
         ),
         "readme_states_thesis_command": "neurodrift thesis" in read("README.md").lower(),
+        "readme_states_evidence_command": "neurodrift evidence" in read("README.md").lower(),
     }
     scanned = "\n".join(
         path.read_text(encoding="utf-8", errors="ignore")

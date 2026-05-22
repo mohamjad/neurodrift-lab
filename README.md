@@ -63,6 +63,12 @@ Thesis experiment:
 neurodrift thesis --config configs\simulated_alignment_meaning_split.json
 ```
 
+Evidence suite:
+
+```powershell
+neurodrift evidence --suite synthetic --compact --figure-dir artifacts\evidence
+```
+
 ## Shape
 
 ```text
@@ -71,6 +77,9 @@ src/neurodrift/
   intent.py   probabilistic weak intent labels
   plasticity.py meaning-gap signal
   experiments/ paper-facing thesis checks
+  evidence.py repeated suite orchestration
+  stats.py    bootstrap intervals and effect summaries
+  figures.py  SVG evidence figures
   models/     decoders and aligners
   envs/       eval loop
   datasets/   real-data loaders
@@ -86,6 +95,7 @@ docs/         details when needed
 neurodrift simulate --aligner procrustes
 neurodrift benchmark --config configs\simulated_high_drift.json
 neurodrift thesis --input data\fixtures\nlb_mc_maze_small_20.npz
+neurodrift evidence --suite all --compact
 neurodrift fetch-milimbeeg --subject S1
 neurodrift convert-nlb --input path\to\eval_data_test.h5
 ```

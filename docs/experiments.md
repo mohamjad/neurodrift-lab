@@ -47,6 +47,16 @@ If `alignment_gain` is positive and `meaning_gain` is negative, the method
 over-aligned: it made the source decoder look better while moving away from the
 target session's weak intent.
 
+## Evidence suite
+
+```powershell
+neurodrift evidence --suite synthetic --compact --figure-dir artifacts\evidence
+```
+
+This runs repeated thesis experiments across seeds and drift levels. The output
+adds bootstrap intervals for split rate, over-alignment rate, ambiguity, and
+meaning loss.
+
 ## Real-data smoke test
 
 Included EEG fixture:
