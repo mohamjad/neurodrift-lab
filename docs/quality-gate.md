@@ -10,6 +10,8 @@ The gate checks the actual thesis surface:
 
 - Riemannian drift exists.
 - Trajectory drift exists.
+- Weak intent supervision exists.
+- Meaning-gap plasticity reporting exists.
 - Eval environment exists.
 - Real EEG and neural-population fixtures exist.
 - Dataset loaders exist.
