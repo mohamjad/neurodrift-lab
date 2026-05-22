@@ -25,3 +25,11 @@ def test_cli_thesis_runs(capsys) -> None:
 
     assert exit_code == 0
     assert "best_by_meaning" in captured.out
+
+
+def test_cli_evidence_runs(capsys) -> None:
+    exit_code = main(["evidence", "--suite", "synthetic", "--seed-count", "1", "--compact"])
+    captured = capsys.readouterr()
+
+    assert exit_code == 0
+    assert "split_rate" in captured.out

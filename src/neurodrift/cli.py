@@ -11,7 +11,9 @@ from neurodrift.benchmarks import ALIGNER_REGISTRY, run_alignment_benchmark
 from neurodrift.datasets.milimbeeg import fetch_milimbeeg_sample, load_milimbeeg_pair
 from neurodrift.datasets.nlb import load_nlb_h5_pair
 from neurodrift.envs.intent_drift import IntentDriftEnv
+from neurodrift.evidence import run_evidence_suite
 from neurodrift.experiments.meaning_preservation import run_meaning_preservation_experiment
+from neurodrift.figures import write_evidence_figures
 from neurodrift.io import load_session_pair_npz, save_json, save_session_pair_npz
 from neurodrift.simulation import SimulationConfig, simulate_session_pair
 
@@ -54,6 +56,21 @@ def run_thesis(args: argparse.Namespace) -> int:
     pair = _load_pair(args)
     report = run_meaning_preservation_experiment(pair, temperature=args.temperature)
     _emit(report.to_dict(), args.output)
+    return 0
+
+
+def run_evidence(args: argparse.Namespace) -> int:
+    summary = run_evidence_suite(
+        suite=args.suite,
+        seed_count=args.seed_count,
+        include_fixtures=not args.no_fixtures,
+        temperature=args.temperature,
+    )
+    payload = summary.to_dict(include_reports=not args.compact)
+    _emit(payload, args.output)
+    if args.figure_dir is not None:
+        paths = write_evidence_figures(summary, args.figure_dir)
+        print(json.dumps({"figures": [str(path) for path in paths]}, indent=2))
     return 0
 
 
@@ -103,6 +120,19 @@ def build_parser() -> argparse.ArgumentParser:
     thesis.add_argument("--output", type=Path, default=None, help="write JSON report")
     thesis.add_argument("--temperature", type=float, default=0.75)
     thesis.set_defaults(func=run_thesis)
+
+    evidence = subparsers.add_parser(
+        "evidence",
+        help="run repeated evidence suites for the intent-preservation thesis",
+    )
+    evidence.add_argument("--suite", choices=("synthetic", "fixtures", "all"), default="synthetic")
+    evidence.add_argument("--seed-count", type=int, default=24)
+    evidence.add_argument("--temperature", type=float, default=0.75)
+    evidence.add_argument("--output", type=Path, default=None, help="write JSON report")
+    evidence.add_argument("--figure-dir", type=Path, default=None, help="write SVG figures")
+    evidence.add_argument("--compact", action="store_true", help="omit nested per-run reports")
+    evidence.add_argument("--no-fixtures", action="store_true", help="skip local fixture datasets")
+    evidence.set_defaults(func=run_evidence)
 
     milimbeeg = subparsers.add_parser(
         "fetch-milimbeeg",
