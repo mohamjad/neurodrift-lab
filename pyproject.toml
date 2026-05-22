@@ -30,6 +30,7 @@ integrations = [
 
 [project.scripts]
 neurodrift = "neurodrift.cli:main"
+neurodrift-quality = "scripts.quality_gate:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
