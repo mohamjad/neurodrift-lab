@@ -54,6 +54,71 @@ def soft_intent_from_observations(
     return IntentDistribution(labels=labels, probabilities=probs)
 
 
+def intent_distribution_from_vectors(
+    vectors: Array,
+    labels: tuple[str, ...] | None = None,
+    temperature: float = 1.0,
+) -> IntentDistribution:
+    """Convert continuous intent vectors into a weak aggregate distribution."""
+
+    vectors = np.asarray(vectors, dtype=np.float64)
+    if vectors.ndim != 2:
+        raise ValueError("vectors must be shaped (trials, intent_dims)")
+    if vectors.shape[0] == 0 or vectors.shape[1] == 0:
+        raise ValueError("vectors must be non-empty")
+    if temperature <= 0:
+        raise ValueError("temperature must be positive")
+
+    if labels is None:
+        signed_labels = tuple(
+            label
+            for idx in range(vectors.shape[1])
+            for label in (f"intent_{idx}_pos", f"intent_{idx}_neg")
+        )
+        evidence_by_label = []
+        for idx in range(vectors.shape[1]):
+            evidence_by_label.append(np.maximum(vectors[:, idx], 0.0))
+            evidence_by_label.append(np.maximum(-vectors[:, idx], 0.0))
+        evidence = np.column_stack(evidence_by_label).mean(axis=0)
+        evidence = (evidence - evidence.mean()) / max(float(evidence.std()), 1e-8)
+        scores = dict(zip(signed_labels, evidence, strict=True))
+        return soft_intent_from_observations(signed_labels, scores, temperature=temperature)
+
+    if len(labels) != vectors.shape[1]:
+        raise ValueError("labels must match intent dimension")
+
+    evidence = np.mean(np.abs(vectors), axis=0)
+    evidence = (evidence - evidence.mean()) / max(float(evidence.std()), 1e-8)
+    scores = dict(zip(labels, evidence, strict=True))
+    return soft_intent_from_observations(labels, scores, temperature=temperature)
+
+
+def trial_intent_probabilities(vectors: Array, temperature: float = 1.0) -> Array:
+    """Return per-trial weak intent probabilities from continuous labels."""
+
+    vectors = np.asarray(vectors, dtype=np.float64)
+    if vectors.ndim != 2:
+        raise ValueError("vectors must be shaped (trials, intent_dims)")
+    if temperature <= 0:
+        raise ValueError("temperature must be positive")
+    evidence = np.abs(vectors)
+    evidence = evidence / np.maximum(evidence.std(axis=0, keepdims=True), 1e-8)
+    shifted = (evidence - evidence.max(axis=1, keepdims=True)) / temperature
+    probabilities = np.exp(shifted)
+    return probabilities / probabilities.sum(axis=1, keepdims=True)
+
+
+def mean_distribution_entropy(probabilities: Array) -> float:
+    """Mean base-2 entropy for a matrix of weak intent probabilities."""
+
+    probabilities = np.asarray(probabilities, dtype=np.float64)
+    if probabilities.ndim != 2:
+        raise ValueError("probabilities must be shaped (trials, labels)")
+    safe = np.maximum(probabilities, 1e-12)
+    entropy = -(safe * np.log2(safe)).sum(axis=1)
+    return float(entropy.mean())
+
+
 def intent_distribution_distance(source: IntentDistribution, target: IntentDistribution) -> float:
     """Jensen-Shannon distance between two intent distributions."""
 
